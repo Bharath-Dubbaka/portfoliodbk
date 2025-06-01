@@ -1,54 +1,97 @@
-import { motion } from 'framer-motion';
+"use client";
+import Link from "next/link";
+import { useState } from "react";
 
-export default function Navigation({ activeSection, setActiveSection }) {
-  const sections = [
-    { id: 'hero', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'projects', label: 'Projects' }
-  ];
-  
-  const scrollToSection = (sectionId) => {
-    const element = document.getElementById(sectionId);
-    if (element) {
-      // Lenis smooth scroll (initialized in main page)
-      element.scrollIntoView({ behavior: 'smooth' });
-      setActiveSection(sectionId);
-    }
-  };
+export default function Header({ activeSection, setActiveSection }) {
+   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
-  return (
-    <motion.nav 
-      className="fixed top-8 right-8 z-50 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 1 }}
-    >
-      <div className="flex flex-col gap-2">
-        {sections.map((section) => (
-          <motion.button
-            key={section.id}
-            onClick={() => scrollToSection(section.id)}
-            className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group ${
-              activeSection === section.id 
-                ? 'bg-purple-600 text-white' 
-                : 'bg-white/10 text-gray-400 hover:bg-white/20 hover:text-white'
-            }`}
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-            title={section.label}
-          >
-            {/* Dot indicator */}
-            <div className={`w-2 h-2 rounded-full transition-all duration-300 ${
-              activeSection === section.id ? 'bg-white' : 'bg-current'
-            }`} />
-            
-            {/* Tooltip */}
-            <span className="absolute right-full mr-3 px-2 py-1 bg-black text-white text-sm rounded whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-              {section.label}
-            </span>
-          </motion.button>
-        ))}
-      </div>
-    </motion.nav>
-  );
+   const scrollToSection = (sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+         element.scrollIntoView({ behavior: "smooth" });
+         setActiveSection(sectionId);
+      }
+   };
+
+   const navigationSections = [
+      { id: "hero", label: "Home" },
+      { id: "about", label: "About" },
+      { id: "projects", label: "Projects" },
+   ];
+
+   return (
+      <header className="fixed top-0 w-full z-50 bg-gradient-to-r from-purple-50 via-indigo-50 to-blue-50 border-b border-indigo-100 shadow-sm backdrop-blur-md">
+         <div className="max-w-full mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="flex justify-between items-center h-16 md:h-[4rem]">
+               {/* Logo */}
+               <Link href="/" className="flex flex-col justify-center">
+                  <div className="text-2xl md:text-3xl font-bold bg-gradient-to-r from-purple-800 to-pink-800 text-transparent bg-clip-text tracking-tight">
+                     Bharath Dubbaka
+                  </div>
+               </Link>
+
+               {/* Desktop Nav */}
+               <nav className="hidden lg:flex space-x-6">
+                  {navigationSections.map((section) => (
+                     <button
+                        key={section.id}
+                        onClick={() => scrollToSection(section.id)}
+                        className={`text-sm font-medium transition duration-200 hover:scale-105 transform rounded-md px-2 py-1 ${
+                           activeSection === section.id
+                              ? "text-indigo-700 border-b-2 bg-slate-300 border-indigo-700"
+                              : "text-slate-600 hover:text-indigo-600"
+                        }`}
+                     >
+                        {section.label}
+                     </button>
+                  ))}
+               </nav>
+
+               {/* Mobile Menu Button */}
+               <div className="lg:hidden flex items-center">
+                  <button
+                     onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                     className="p-2 text-indigo-600 hover:bg-indigo-100 rounded-md"
+                  >
+                     <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                     >
+                        <path
+                           strokeLinecap="round"
+                           strokeLinejoin="round"
+                           strokeWidth={2}
+                           d="M4 6h16M4 12h16M4 18h16"
+                        />
+                     </svg>
+                  </button>
+               </div>
+            </div>
+
+            {/* Mobile Dropdown */}
+            {isMobileMenuOpen && (
+               <div className="lg:hidden mt-2 py-2 bg-white rounded-md shadow-md border border-indigo-100">
+                  {navigationSections.map((section) => (
+                     <button
+                        key={section.id}
+                        onClick={() => {
+                           scrollToSection(section.id);
+                           setIsMobileMenuOpen(false);
+                        }}
+                        className={`block w-full text-left px-4 py-2 text-sm ${
+                           activeSection === section.id
+                              ? "text-indigo-700 font-semibold"
+                              : "text-slate-700 hover:text-indigo-600"
+                        }`}
+                     >
+                        {section.label}
+                     </button>
+                  ))}
+               </div>
+            )}
+         </div>
+      </header>
+   );
 }

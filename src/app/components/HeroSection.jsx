@@ -16,11 +16,7 @@ export default function HeroSection() {
    const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
 
    return (
-      <section
-         ref={ref}
-         id="hero"
-         className="relative h-screen flex items-center justify-center overflow-hidden"
-      >
+      <section className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center px-6 py-20">
          {/* Background with parallax - moves slower than scroll */}
          <motion.div
             style={{ y: backgroundY }}
@@ -53,49 +49,63 @@ export default function HeroSection() {
                />
             ))}
          </div>
+         <motion.div style={{ y: textY }} className="relative z-20">
+            <div className="max-w-5xl w-full text-center">
+               {/* Name */}
+               <motion.h1
+                  className="text-5xl md:text-7xl font-extrabold mb-4"
+                  initial={{ opacity: 0, y: 100 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.2 }}
+               >
+                  Bharath Dubbaka
+               </motion.h1>
 
-         {/* Main content with parallax */}
-         <motion.div
-            style={{ y: textY }}
-            className="relative z-20 text-center px-6 max-w-4xl"
-         >
-            <motion.h1
-               className="text-6xl md:text-8xl font-black mb-6 bg-gradient-to-r from-white via-purple-200 to-purple-400 bg-clip-text text-transparent"
-               initial={{ opacity: 0, y: 100 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.2 }}
-            >
-               Bharath Dubbaka
-            </motion.h1>
+               {/* Role */}
+               <motion.p
+                  className="text-xl md:text-2xl text-purple-300 tracking-wide font-medium mb-2 uppercase"
+                  initial={{ opacity: 0, y: 50 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.4 }}
+               >
+                  Full Stack Developer & Problem Solver
+               </motion.p>
 
-            <motion.p
-               className="text-xl md:text-2xl text-gray-300 mb-8"
-               initial={{ opacity: 0, y: 50 }}
-               animate={{ opacity: 1, y: 0 }}
-               transition={{ duration: 1, delay: 0.5 }}
-            >
-               Full Stack Developer & Creative Coder
-            </motion.p>
+               {/* Main Intro */}
+               <motion.p
+                  className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-6"
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.6 }}
+               >
+                  I design and develop modern web applications — from quick
+                  landing pages to full-stack platforms. Whether you're starting
+                  from scratch or enhancing an existing system, I help bring
+                  your ideas to life with clean, scalable code.
+               </motion.p>
 
-            <motion.div
-               initial={{ opacity: 0, scale: 0.8 }}
-               animate={{ opacity: 1, scale: 1 }}
-               transition={{ duration: 0.8, delay: 0.8 }}
-            >
-               <button className="px-8 py-4 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-purple-500/25 transition-all duration-300 transform hover:scale-105">
-                  View My Work
-               </button>
-            </motion.div>
-         </motion.div>
+               {/* Specialization */}
+               <motion.p
+                  className="text-base md:text-lg text-gray-400 max-w-xl mx-auto mb-10"
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 1, delay: 0.7 }}
+               >
+                  My expertise lies in React, Next.js, Firebase, and Tailwind —
+                  delivering full-stack solutions that perform beautifully
+                  across devices.
+               </motion.p>
 
-         {/* Scroll indicator */}
-         <motion.div
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-         >
-            <div className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center">
-               <div className="w-1 h-3 bg-white rounded-full mt-2"></div>
+               {/* CTA Button */}
+               <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{ duration: 0.8, delay: 0.9 }}
+               >
+                  <button className="px-8 py-4 bg-gradient-to-r from-fuchsia-600 to-pink-500 rounded-full text-white font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 transform hover:scale-105">
+                     Let’s Build Something
+                  </button>
+               </motion.div>
             </div>
          </motion.div>
       </section>
