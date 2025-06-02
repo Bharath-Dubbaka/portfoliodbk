@@ -133,9 +133,34 @@ export default function HeroSection() {
                         by an entrepreneurial spirit, you can see it in action
                         with my{" "}
                         <strong className="text-purple-400">
-                           Mini-SaaS/Products like (ResumeOnFly.com,
-                           CVtoSalary.com) and real-time tools
-                           (RecruitCatch.com){" "}
+                           Mini-SaaS/Products like{" "}
+                           <a
+                              href="https://resumeonfly.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline hover:text-pink-400 transition-colors"
+                           >
+                              ResumeOnFly.com
+                           </a>
+                           ,{" "}
+                           <a
+                              href="https://cvtosalary.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline hover:text-pink-400 transition-colors"
+                           >
+                              CVtoSalary.com
+                           </a>
+                           , and real-time tools like{" "}
+                           <a
+                              href="https://recruitcatch.com"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="underline hover:text-pink-400 transition-colors"
+                           >
+                              RecruitCatch.com
+                           </a>
+                           .
                         </strong>
                      </p>
 
@@ -143,8 +168,8 @@ export default function HeroSection() {
                         className="text-base md:text-lg text-gray-300 font-medium leading-relaxed"
                         style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
                      >
-                        My background as an IT Recruiter provides keen market
-                        insight, complementing{" "}
+                        My previous background as an IT Recruiter provides keen
+                        market insight, complementing{" "}
                         <strong className="text-purple-400">
                            my diverse skills in Digital Marketing, SEO, Content
                            writing, and Design,{" "}
@@ -169,15 +194,16 @@ export default function HeroSection() {
                               SERVICE
                            </p>
                            <h3 className="text-xl font-bold text-white mb-4">
-                              Prototyping your idea ?
+                              Ready to Build or Hire?
                            </h3>
                            <div className="w-12 h-1 bg-purple-400 mb-4" />
                         </div>
 
                         <p className="text-gray-300 leading-relaxed text-sm">
-                           Need a landing page for your startup? I build fast,
-                           customized and responsive landing pages at prices
-                           that won't break the bank.
+                           Whether you're hiring for a role or need someone to
+                           prototype and ship quickly — I can deliver.
+                           <br />I build fast, customized and responsive landing
+                           pages at prices that won't break the bank.
                         </p>
 
                         {/* <motion.button
@@ -200,26 +226,34 @@ export default function HeroSection() {
                                     icon: TwitterIcon,
                                     label: "Twitter",
                                     color: "text-blue-500",
+                                    href: "https://x.com/reach__Bharath",
                                  },
                                  {
                                     icon: Mail,
                                     label: "Email",
                                     color: "text-red-500",
+                                    href: "mailto:you@example.com",
                                  },
                                  {
                                     icon: Linkedin,
                                     label: "LinkedIn",
                                     color: "text-red-500",
+                                    href: "https://www.linkedin.com/in/bharath-kumar-4bb399208/",
                                  },
                                  {
                                     icon: Github,
                                     label: "GitHub",
                                     color: "text-gray-800",
+                                    href: "https://github.com/Bharath-Dubbaka",
                                  },
                               ].map((social, index) => (
-                                 <motion.div
+                                 <motion.a
                                     key={social.label}
-                                    className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-gray-300 transition-colors cursor-pointer"
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.label}
+                                    className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
                                     whileHover={{ scale: 1.1 }}
                                     whileTap={{ scale: 0.95 }}
                                     initial={{ opacity: 0, y: 20 }}
@@ -230,14 +264,12 @@ export default function HeroSection() {
                                     }}
                                  >
                                     <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-full flex items-center justify-center">
-                                       <social.icon
-                                          className={`w-5 h-5 text-white`}
-                                       />
+                                       <social.icon className="w-5 h-5 text-white" />
                                     </div>
-                                    <span className=" text-xs md:text-sm font-medium text-gray-900 text-shadow-2xs">
+                                    <span className="text-xs md:text-sm font-medium text-white">
                                        {social.label}
                                     </span>
-                                 </motion.div>
+                                 </motion.a>
                               ))}
                            </div>
                         </motion.div>
