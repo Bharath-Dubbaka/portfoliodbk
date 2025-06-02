@@ -18,7 +18,7 @@ export default function Navigation({ activeSection, setActiveSection }) {
 
    return (
       <motion.nav
-         className="fixed top-8 right-8 z-50 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10"
+         className="fixed top-4 right-2 md:top-8 md:right-8 z-50 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10"
          initial={{ opacity: 0, x: 50 }}
          animate={{ opacity: 1, x: 0 }}
          transition={{ duration: 0.8, delay: 1 }}
@@ -28,7 +28,7 @@ export default function Navigation({ activeSection, setActiveSection }) {
                <motion.button
                   key={section.id}
                   onClick={() => scrollToSection(section.id)}
-                  className={`relative w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 group ${
+                  className={`relative w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group ${
                      activeSection === section.id
                         ? "bg-gradient-to-r from-red-500 via-orange-500 to-pink-500 text-white"
                         : "bg-white/10 text-gray-400 hover:bg-white/20 hover:text-white"

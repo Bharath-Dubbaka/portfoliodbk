@@ -36,7 +36,7 @@ export default function AboutSection() {
       <section
          ref={ref}
          id="about"
-         className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 pb-20  pt-40"
+         className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 pb-10 md:pb-20 pt-16 md:pt-40"
       >
          <div className="container mx-auto px-6 ">
             {/* Section title with parallax */}

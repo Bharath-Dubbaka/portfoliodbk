@@ -65,7 +65,7 @@ export default function HeroSection() {
          </div>
 
          <motion.div
-            style={{ y: textY }}
+            // style={{ y: textY }}
             className="relative z-20 w-full max-w-7xl mx-auto"
          >
             <div className="grid lg:grid-cols-3 gap-12 items-start">
@@ -112,31 +112,45 @@ export default function HeroSection() {
                         className="text-lg md:text-xl text-gray-200 leading-relaxed"
                         style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
                      >
-                        I design and develop modern web applications — from
-                        quick landing pages to full-stack platforms, based on
-                        React, Next.js, and Firebase.
+                        Driven by a genuine passion for not just programming,
+                        but for building and solving real-world problems. That
+                        entrepreneurial spirit, combined with your practical
+                        success in freelancing using your diverse skills, makes
+                        you incredibly unique.
                      </p>
 
                      <p
-                        className="text-base md:text-lg text-gray-300 leading-relaxed"
+                        className="text-base md:text-lg leading-relaxed"
                         style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
                      >
-                        Whether you need an entirely new website, an extension
-                        or a few tweaks to your current design, I will build you
-                        the web presence your business needs.
+                        I craft modern full-stack web applications with{" "}
+                        <strong className="text-purple-400">
+                           React/Next.js and the MERN stack (Mongo, Express,
+                           Node).
+                        </strong>
+                        <br />
+                        My unique journey as a self-taught developer is fueled
+                        by an entrepreneurial spirit, you can see it in action
+                        with my{" "}
+                        <strong className="text-purple-400">
+                           Mini-SaaS/Products like (ResumeOnFly.com,
+                           CVtoSalary.com) and real-time tools
+                           (RecruitCatch.com){" "}
+                        </strong>
                      </p>
 
                      <p
                         className="text-base md:text-lg text-gray-300 font-medium leading-relaxed"
                         style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
                      >
-                        <strong className="text-purple-300">
-                           Development with React, Next.js, and Firebase is my
-                           core competence.
+                        My background as an IT Recruiter provides keen market
+                        insight, complementing{" "}
+                        <strong className="text-purple-400">
+                           my diverse skills in Digital Marketing, SEO, Content
+                           writing, and Design,{" "}
                         </strong>
-                        <br />I take a comprehensive approach to frontend and
-                        backend development and make sure everything is
-                        flawlessly crafted from the very beginning.
+                        through which I've also successfully freelanced for
+                        clients.
                      </p>
                   </motion.div>
                </div>
@@ -175,7 +189,7 @@ export default function HeroSection() {
                         </motion.button> */}
                         {/* Social Links */}
                         <motion.div
-                           className=" rounded-lg p-6 shadow-xl bg-gradient-to-r from-purple-500 to-pink-500"
+                           className=" rounded-lg p-4 md:p-6 shadow-xl bg-gradient-to-r from-purple-500 to-pink-500"
                            initial={{ opacity: 0, x: 50 }}
                            animate={{ opacity: 1, x: 0 }}
                            transition={{ duration: 1, delay: 1.2 }}
@@ -215,12 +229,12 @@ export default function HeroSection() {
                                        delay: 1.4 + index * 0.1,
                                     }}
                                  >
-                                    <div className="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-full flex items-center justify-center">
                                        <social.icon
                                           className={`w-5 h-5 text-white`}
                                        />
                                     </div>
-                                    <span className="text-sm font-medium text-gray-900 text-shadow-2xs">
+                                    <span className=" text-xs md:text-sm font-medium text-gray-900 text-shadow-2xs">
                                        {social.label}
                                     </span>
                                  </motion.div>

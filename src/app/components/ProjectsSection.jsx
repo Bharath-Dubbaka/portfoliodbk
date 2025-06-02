@@ -56,7 +56,7 @@ export default function ProjectsSection() {
       <section
          ref={ref}
          id="projects"
-         className="min-h-screen bg-gradient-to-b from-gray-800 to-black py-20"
+         className="min-h-screen bg-gradient-to-b from-gray-800 to-black pb-20 pt-16 md:pt-40"
       >
          <div className="container mx-auto px-6">
             {/* Section title */}
