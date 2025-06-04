@@ -12,7 +12,7 @@ import {
    Linkedin,
 } from "lucide-react";
 
-export default function HeroSection() {
+export default function HeroSection({ scrollToSection }) {
    const ref = useRef(null);
 
    // Framer Motion's useScroll hook - tracks scroll progress
@@ -29,7 +29,8 @@ export default function HeroSection() {
    return (
       <section
          ref={ref}
-         className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center px-6 py-20 relative overflow-hidden"
+         id="hero"
+         className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center px-10 py-20 relative overflow-hidden"
       >
          {/* Background with parallax - moves slower than scroll */}
          <motion.div
@@ -232,7 +233,7 @@ export default function HeroSection() {
                                     icon: Mail,
                                     label: "Email",
                                     color: "text-red-500",
-                                    href: "mailto:you@example.com",
+                                    onClick: () => scrollToSection("contact"), // Pass "contact" as the sectionId
                                  },
                                  {
                                     icon: Linkedin,
@@ -246,31 +247,43 @@ export default function HeroSection() {
                                     color: "text-gray-800",
                                     href: "https://github.com/Bharath-Dubbaka",
                                  },
-                              ].map((social, index) => (
-                                 <motion.a
-                                    key={social.label}
-                                    href={social.href}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    aria-label={social.label}
-                                    className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                                    whileHover={{ scale: 1.1 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    transition={{
-                                       duration: 0.5,
-                                       delay: 1.4 + index * 0.1,
-                                    }}
-                                 >
-                                    <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-full flex items-center justify-center">
-                                       <social.icon className="w-5 h-5 text-white" />
-                                    </div>
-                                    <span className="text-xs md:text-sm font-medium text-white">
-                                       {social.label}
-                                    </span>
-                                 </motion.a>
-                              ))}
+                              ].map((social, index) => {
+                                 const isEmail =
+                                    !social.href && social.label === "Email"; // detect non-link social item
+
+                                 return (
+                                    <motion.a
+                                       key={social.label}
+                                       href={social.href || undefined}
+                                       onClick={social.onClick || undefined} // now handled!
+                                       target={
+                                          social.href ? "_blank" : undefined
+                                       }
+                                       rel={
+                                          social.href
+                                             ? "noopener noreferrer"
+                                             : undefined
+                                       }
+                                       aria-label={social.label}
+                                       className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+                                       whileHover={{ scale: 1.1 }}
+                                       whileTap={{ scale: 0.95 }}
+                                       initial={{ opacity: 0, y: 20 }}
+                                       animate={{ opacity: 1, y: 0 }}
+                                       transition={{
+                                          duration: 0.5,
+                                          delay: 1.4 + index * 0.1,
+                                       }}
+                                    >
+                                       <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-full flex items-center justify-center">
+                                          <social.icon className="w-5 h-5 text-white" />
+                                       </div>
+                                       <span className="text-xs md:text-sm font-medium text-white">
+                                          {social.label}
+                                       </span>
+                                    </motion.a>
+                                 );
+                              })}{" "}
                            </div>
                         </motion.div>
                      </div>

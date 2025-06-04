@@ -1,20 +1,24 @@
 import { motion } from "framer-motion";
 
-export default function Navigation({ activeSection, setActiveSection }) {
+export default function Navigation({
+   activeSection,
+   setActiveSection,
+   scrollToSection,
+}) {
    const sections = [
       { id: "hero", label: "Home" },
-      { id: "about", label: "About" },
       { id: "projects", label: "Projects" },
+      { id: "contact", label: "Contact" },
    ];
 
-   const scrollToSection = (sectionId) => {
-      const element = document.getElementById(sectionId);
-      if (element) {
-         // Lenis smooth scroll (initialized in main page)
-         element.scrollIntoView({ behavior: "smooth" });
-         setActiveSection(sectionId);
-      }
-   };
+   // const scrollToSection = (sectionId) => {
+   //    const element = document.getElementById(sectionId);
+   //    if (element) {
+   //       // Lenis smooth scroll (initialized in main page)
+   //       element.scrollIntoView({ behavior: "smooth" });
+   //       setActiveSection(sectionId);
+   //    }
+   // };
 
    return (
       <motion.nav
@@ -27,7 +31,11 @@ export default function Navigation({ activeSection, setActiveSection }) {
             {sections.map((section) => (
                <motion.button
                   key={section.id}
-                  onClick={() => scrollToSection(section.id)}
+                  // Use the scrollToSection prop directly
+                  onClick={() => {
+                     console.log("Navigation button clicked:", section.id); // ADD THIS
+                     scrollToSection(section.id);
+                  }}
                   className={`relative w-8 h-8 md:w-12 md:h-12 rounded-full flex items-center justify-center transition-all duration-300 group ${
                      activeSection === section.id
                         ? "bg-gradient-to-r from-red-500 via-orange-500 to-pink-500 text-white"
