@@ -24,31 +24,64 @@ export default function ProjectsSection() {
 
    const projects = [
       {
-         title: "E-Commerce Platform",
+         title: "ResumeOnFly.com - mini-SaaS",
          description:
-            "Full-stack e-commerce solution with React, Node.js, and Stripe integration. Features include user authentication, shopping cart, and admin dashboard.",
-         image: "🛒",
-         tech: ["React", "Node.js", "MongoDB", "Stripe"],
-         github: "#",
+            "Built from Scratch: Built for busy job seekers — upload your master resume once, and customize it for every job in a few clicks.",
+         image: "/assets/projectImgs/Img_resumeonflyTwo.png",
+         tech: ["Next.js", "MERN", "Razorpay", "OpenAI", "Oauth2"],
+         github: "https://github.com/Bharath-Dubbaka/ResumeMaxxing",
+         live: "https://resumeonfly.com/",
+      },
+      {
+         title: "RecruitCatch.com - 1K active users ",
+         description:
+            "FREE XRay Search Tool built for Recruiters to find publicly available profile on Linkedin(without any limitations) to match/meet the Job requirements",
+         image: "/assets/projectImgs/Img_recruitcatch.png",
+         tech: ["Next.js", "React.js", "Tailwind CSS", "Google API"],
+         github: "https://github.com/Bharath-Dubbaka/recruitNinja",
+         live: "https://recruitcatch.com/",
+      },
+      {
+         title: "CVtoSalary.com",
+         description:
+            "Practice project trying to clone Tinder functionality , Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
+         image: "/assets/projectImgs/Img_cvtosalary.png",
+         tech: ["Next.js", "Typescript", "Tailwind CSS", "AceternityUI"],
+         github: "https://github.com/Bharath-Dubbaka/CvtoSalary-aceternity",
+         live: "https://cvtosalary.com/",
+      },
+      {
+         title: "DevTinder - Clones",
+         description:
+            "Practice project trying to clone Tinder functionality , Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
+         image: "/assets/projectImgs/Img_resumeonfly.png",
+         tech: ["MERN", "Mongoose", "TailwindCSS", "AWS deploy"],
+         github: "https://github.com/Bharath-Dubbaka/TinderProject",
          live: "#",
       },
       {
-         title: "Social Media Dashboard",
+         title: "Swiggy Clone - Real-time data fetched from Swiggy APIs",
          description:
-            "Real-time social media analytics dashboard with beautiful charts and insights. Built with Next.js and integrated with multiple APIs.",
-         image: "📊",
-         tech: ["Next.js", "Chart.js", "Tailwind CSS", "API Integration"],
-         github: "#",
-         live: "#",
+            "Practice Project - Food Delivery App inspired by Swiggy using Real-time production data fetched from Swiggy APIs.",
+         image: "/assets/projectImgs/Img_SwiggyClone.png",
+         tech: [
+            "React.js",
+            "TailwindCSS",
+            "Real-time data",
+            "Swiggy APIs",
+            "Live Location",
+         ],
+         github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
+         live: "https://swigclone.netlify.app/",
       },
       {
-         title: "AI Chat Application",
+         title: "Netflix+GPT - Clone Project",
          description:
-            "Modern chat application with AI integration using OpenAI API. Features real-time messaging, file sharing, and smart responses.",
-         image: "🤖",
-         tech: ["React", "Socket.io", "OpenAI API", "Express"],
-         github: "#",
-         live: "#",
+            "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
+         image: "/assets/projectImgs/Img_NetflixGPT.png",
+         tech: ["React", "Tailwind", "TMDB API", "Youtube API", "OpenAI"],
+         github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
+         live: "https://moviesflixgpt.netlify.app",
       },
    ];
 
@@ -101,8 +134,12 @@ export default function ProjectsSection() {
                      whileHover={{ y: -10, scale: 1.02 }}
                   >
                      {/* Project image/icon */}
-                     <div className="text-6xl mb-6 text-center">
-                        {project.image}
+                     <div className="overflow-hidden rounded-xl mb-4 border border-slate-600">
+                        <img
+                           src={project.image}
+                           alt={project.title}
+                           className="w-full h-52 object-cover duration-300 hover:scale-105"
+                        />
                      </div>
 
                      {/* Project content */}
@@ -130,6 +167,8 @@ export default function ProjectsSection() {
                      <div className="flex gap-4">
                         <motion.a
                            href={project.github}
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className="flex items-center gap-2 px-4 py-2 bg-gray-700 hover:bg-gray-600 rounded-lg text-white transition-colors"
                            whileHover={{ scale: 1.05 }}
                            whileTap={{ scale: 0.95 }}
@@ -139,6 +178,8 @@ export default function ProjectsSection() {
                         </motion.a>
                         <motion.a
                            href={project.live}
+                           target="_blank"
+                           rel="noopener noreferrer"
                            className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white transition-all"
                            whileHover={{ scale: 1.05 }}
                            whileTap={{ scale: 0.95 }}
