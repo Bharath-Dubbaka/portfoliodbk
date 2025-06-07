@@ -117,7 +117,7 @@ export default function HeroSection({ scrollToSection }) {
                         but for building and solving real-world problems. That
                         entrepreneurial spirit, combined with your practical
                         success in freelancing using your diverse skills, makes
-                        you incredibly unique.
+                        incredibly unique.
                      </p>
 
                      <p

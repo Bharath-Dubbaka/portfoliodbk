@@ -35,7 +35,7 @@ export default function ProjectsSection() {
       {
          title: "RecruitCatch.com - 1K active users ",
          description:
-            "FREE XRay Search Tool built for Recruiters to find publicly available profile on Linkedin(without any limitations) to match/meet the Job requirements",
+            "FREE XRay Search Tool built for Recruiters to find publicly available profile on Linkedin(without any limitations) to match/meet there Job requirements",
          image: "/assets/projectImgs/Img_recruitcatch.png",
          tech: ["Next.js", "React.js", "Tailwind CSS", "Google API"],
          github: "https://github.com/Bharath-Dubbaka/recruitNinja",
@@ -127,18 +127,28 @@ export default function ProjectsSection() {
                {projects.map((project, index) => (
                   <motion.div
                      key={project.title}
-                     className="group relative bg-gray-800/50 backdrop-blur-sm rounded-2xl p-6 border border-gray-700/50 hover:border-purple-500/50 transition-all duration-300"
+                     className={`group relative p-6 rounded-2xl border transition-all duration-300
+         ${
+            index < 2
+               ? "bg-gradient-to-br from-purple-900/30 to-pink-900/30 border-gray-500/40 shadow-purple-500/20 shadow-xl scale-[1.02]"
+               : "bg-gray-800/50 border-gray-700/50 backdrop-blur-sm"
+         } hover:border-purple-500/50`}
                      initial={{ opacity: 0, y: 50 }}
                      animate={cardsInView ? { opacity: 1, y: 0 } : {}}
-                     transition={{ duration: 0.6, delay: index * 0.2 }}
+                     transition={{ duration: 0.3, delay: index * 0.2 }}
                      whileHover={{ y: -10, scale: 1.02 }}
                   >
                      {/* Project image/icon */}
+                     {index < 2 && (
+                        <span className="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 text-xs font-bold rounded-full animate-pulse z-10 shadow-md">
+                           Featured
+                        </span>
+                     )}
                      <div className="overflow-hidden rounded-xl mb-4 border border-slate-600">
                         <img
                            src={project.image}
                            alt={project.title}
-                           className="w-full h-52 object-cover duration-300 hover:scale-105"
+                           className="w-full h-52 object-cover duration-300"
                         />
                      </div>
 
