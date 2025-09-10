@@ -24,7 +24,7 @@ export default function ProjectsSection() {
 
    const projects = [
       {
-         title: "ResumeOnFly.com - mini-SaaS",
+         title: "ResumeOnFly.com - SaaS",
          description:
             "Built from Scratch: Built for busy job seekers — upload your master resume once, and customize it for every job in a few clicks.",
          image: "/assets/projectImgs/Img_resumeonflyTwo.png",
@@ -51,16 +51,15 @@ export default function ProjectsSection() {
          live: "https://cvtosalary.com/",
       },
       {
-         title: "DevTinder - Clones",
-         description:
-            "Practice project trying to clone Tinder functionality , Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
-         image: "/assets/projectImgs/Img_resumeonfly.png",
-         tech: ["MERN", "Mongoose", "TailwindCSS", "AWS deploy"],
-         github: "https://github.com/Bharath-Dubbaka/TinderProject",
+         title: "LoveatFirstBite",
+         description: "Restaurant and cafe",
+         image: "/assets/projectImgs/Img_firstbite.png",
+         tech: ["MERN", "Mongoose", "TailwindCSS"],
+         github: "https://github.com/Bharath-Dubbaka/firstbite-node",
          live: "#",
       },
       {
-         title: "Swiggy Clone - Real-time data fetched from Swiggy APIs",
+         title: "Swiggy Demo - Real-time data fetched from Swiggy APIs",
          description:
             "Practice Project - Food Delivery App inspired by Swiggy using Real-time production data fetched from Swiggy APIs.",
          image: "/assets/projectImgs/Img_SwiggyClone.png",
@@ -75,7 +74,7 @@ export default function ProjectsSection() {
          live: "https://swigclone.netlify.app/",
       },
       {
-         title: "Netflix+GPT - Clone Project",
+         title: "Netflix+GPT",
          description:
             "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
          image: "/assets/projectImgs/Img_NetflixGPT.png",
