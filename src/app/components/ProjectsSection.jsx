@@ -24,6 +24,23 @@ export default function ProjectsSection() {
 
    const projects = [
       {
+         title: "CVtoSalary.com",
+         description:
+            "Practice project trying to clone Tinder functionality , Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
+         image: "/assets/projectImgs/Img_cvtosalary.png",
+         tech: ["Next.js", "Typescript", "Tailwind CSS", "AceternityUI"],
+         github: "https://github.com/Bharath-Dubbaka/CvtoSalary-aceternity",
+         live: "https://cvtosalary.com/",
+      },
+      {
+         title: "LoveatFirstBite - Demo",
+         description: "Restaurant and cafe",
+         image: "/assets/projectImgs/Img_firstbite.png",
+         tech: ["MERN", "Mongoose", "TailwindCSS"],
+         github: "https://github.com/Bharath-Dubbaka/firstbite-node",
+         live: "http://16-171-150-110.nip.io/",
+      },
+      {
          title: "ResumeOnFly.com - SaaS",
          description:
             "Built from Scratch: Built for busy job seekers — upload your master resume once, and customize it for every job in a few clicks.",
@@ -41,40 +58,23 @@ export default function ProjectsSection() {
          github: "https://github.com/Bharath-Dubbaka/recruitNinja",
          live: "https://recruitcatch.com/",
       },
+      // {
+      //    title: "Swiggy Demo - Real-time data fetched from Swiggy APIs",
+      //    description:
+      //       "Practice Project - Food Delivery App inspired by Swiggy using Real-time production data fetched from Swiggy APIs.",
+      //    image: "/assets/projectImgs/Img_SwiggyClone.png",
+      //    tech: [
+      //       "React.js",
+      //       "TailwindCSS",
+      //       "Real-time data",
+      //       "Swiggy APIs",
+      //       "Live Location",
+      //    ],
+      //    github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
+      //    live: "https://swigclone.netlify.app/",
+      // },
       {
-         title: "CVtoSalary.com",
-         description:
-            "Practice project trying to clone Tinder functionality , Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
-         image: "/assets/projectImgs/Img_cvtosalary.png",
-         tech: ["Next.js", "Typescript", "Tailwind CSS", "AceternityUI"],
-         github: "https://github.com/Bharath-Dubbaka/CvtoSalary-aceternity",
-         live: "https://cvtosalary.com/",
-      },
-      {
-         title: "LoveatFirstBite",
-         description: "Restaurant and cafe",
-         image: "/assets/projectImgs/Img_firstbite.png",
-         tech: ["MERN", "Mongoose", "TailwindCSS"],
-         github: "https://github.com/Bharath-Dubbaka/firstbite-node",
-         live: "#",
-      },
-      {
-         title: "Swiggy Demo - Real-time data fetched from Swiggy APIs",
-         description:
-            "Practice Project - Food Delivery App inspired by Swiggy using Real-time production data fetched from Swiggy APIs.",
-         image: "/assets/projectImgs/Img_SwiggyClone.png",
-         tech: [
-            "React.js",
-            "TailwindCSS",
-            "Real-time data",
-            "Swiggy APIs",
-            "Live Location",
-         ],
-         github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
-         live: "https://swigclone.netlify.app/",
-      },
-      {
-         title: "Netflix+GPT",
+         title: "NetflixGPT",
          description:
             "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
          image: "/assets/projectImgs/Img_NetflixGPT.png",
