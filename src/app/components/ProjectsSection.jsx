@@ -90,25 +90,25 @@ export default function ProjectsSection() {
          id="projects"
          // className="min-h-screen bg-gradient-to-b from-gray-800 to-black pb-20 pt-16 md:pt-40"
 
-         className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 pb-10 md:pb-20 pt-16 md:pt-20"
+         className="min-h-screen bg-gradient-to-b from-gray-200/95 to-gray-100 pb-4 md:pb-20 pt-16 md:pt-4"
       >
          <div className="container mx-auto px-6">
             {/* Section title */}
             <motion.div
                ref={titleRef}
                style={{ y }}
-               className="text-center mb-16  pt-20"
+               className="text-center mb-16  pt-10"
             >
                <motion.h2
-                  className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+                  className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-700 bg-clip-text text-transparent"
                   initial={{ opacity: 0, y: 50 }}
                   animate={titleInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8 }}
                >
-                  Projects/Products
+                  MY WORK
                </motion.h2>
                <motion.p
-                  className="text-xl text-gray-400 max-w-2xl mx-auto"
+                  className="text-xl text-gray-800 max-w-2xl mx-auto"
                   initial={{ opacity: 0, y: 30 }}
                   animate={titleInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.8, delay: 0.2 }}

@@ -1,299 +1,235 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import {
-   Github,
-   Mail,
-   MessageCircle,
-   Lock,
-   Users,
-   Send,
-   X,
-   TwitterIcon,
-   Linkedin,
-} from "lucide-react";
+import { motion } from "framer-motion";
+import { Github, Mail, Linkedin, Twitter } from "lucide-react";
 
-export default function HeroSection({ scrollToSection }) {
-   const ref = useRef(null);
-
-   // Framer Motion's useScroll hook - tracks scroll progress
-   const { scrollYProgress } = useScroll({
-      target: ref,
-      offset: ["start start", "end start"], // When to start/end tracking
-   });
-
-   // Transform scroll progress into movement values
-   // These create the parallax effect by moving elements at different speeds
-   const backgroundY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-   const textY = useTransform(scrollYProgress, [0, 1], ["0%", "200%"]);
+export default function HeroSection() {
+   const scrollToSection = (sectionId) => {
+      const element = document.getElementById(sectionId);
+      if (element) {
+         element.scrollIntoView({ behavior: "smooth" });
+      }
+   };
 
    return (
       <section
-         ref={ref}
          id="hero"
-         className="min-h-screen bg-gradient-to-b from-[#0f0c29] via-[#302b63] to-[#24243e] text-white flex items-center justify-center px-10 py-20 relative overflow-hidden"
+         className=" min-h-screen bg-gray-100 flex items-center justify-center px-6 pt-2"
       >
-         {/* Background with parallax - moves slower than scroll */}
-         <motion.div
-            style={{ y: backgroundY }}
-            className="absolute inset-0 z-0"
-         >
-            <div className="absolute inset-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 shadow-2xl" />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
-         </motion.div>
-
-         {/* Floating particles background with shadow */}
-         <div className="absolute inset-0 z-10">
-            {[...Array(50)].map((_, i) => (
+         <div className="max-w-[80%] w-full grid lg:grid-cols-2 gap-16 items-center">
+            {/* Left Content - Name and Taglines */}
+            <div className="space-y-8">
+               {/* Main Name with Gradient Effect */}
                <motion.div
-                  key={i}
-                  className="absolute w-1 h-2 bg-pink-400 rounded-full opacity-30 shadow-lg shadow-pink-400/50"
-                  style={{
-                     left: `${Math.random() * 100}%`,
-                     top: `${Math.random() * 100}%`,
-                  }}
-                  animate={{
-                     y: [-20, 20],
-                     opacity: [0.3, 0.8, 0.3],
-                  }}
-                  transition={{
-                     duration: 3 + Math.random() * 2,
-                     repeat: Infinity,
-                     ease: "easeInOut",
-                     delay: Math.random() * 2,
-                  }}
-               />
-            ))}
-         </div>
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8 }}
+                  className="relative pb-10 overflow-visible"
+               >
+                  <h1 className=" text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight">
+                     <span className="block bg-gradient-to-r from-blue-800 via-blue-700 to-blue-600 bg-clip-text text-transparent">
+                        BHARATH
+                     </span>
+                     <span className="block bg-gradient-to-r from-gray-800 via-gray-700 to-gray-600 bg-clip-text text-transparent">
+                        DUBBAKA
+                     </span>
+                  </h1>
 
-         <motion.div
-            // style={{ y: textY }}
-            className="relative z-20 w-full max-w-7xl mx-auto"
-         >
-            <div className="grid lg:grid-cols-3 gap-12 items-start">
-               {/* Left Content - Main Text */}
-               <div className="lg:col-span-2 space-y-8">
-                  {/* Name */}
-                  <motion.h1
-                     className="text-5xl md:text-7xl font-extrabold mb-4 text-shadow-lg"
-                     initial={{ opacity: 0, y: 100 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 1, delay: 0.2 }}
-                     style={{ textShadow: "2px 2px 4px rgba(0,0,0,0.8)" }}
+                  {/* Hover me text */}
+                  {/* <motion.p
+                     initial={{ opacity: 0 }}
+                     animate={{ opacity: 1 }}
+                     transition={{ delay: 1, duration: 0.5 }}
+                     className="absolute -bottom-2 left-0 text-sm text-gray-400 font-light italic"
                   >
-                     Bharath Dubbaka
-                  </motion.h1>
+                     Hover me ↗
+                  </motion.p> */}
+               </motion.div>
 
-                  {/* Role */}
-                  <motion.p
-                     className="text-xl md:text-2xl text-purple-300 tracking-wide font-medium mb-6 uppercase underline text-shadow-2xs"
-                     initial={{ opacity: 0, y: 50 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 1, delay: 0.4 }}
-                     style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.8)" }}
-                  >
-                     Self-Taught, Full Stack Developer
-                  </motion.p>
+               {/* Taglines */}
+               <motion.div
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="space-y-4 text-gray-950 font-medium text-lg md:text-xl uppercase tracking-wide"
+               >
+                  <p className="border-l-4 border-blue-500 pl-4">
+                     Full Stack Developer [MERN]
+                  </p>
+                  <p className="border-l-4 border-gray-500 pl-4">
+                     Self Taught with Entrepreneurial Spirit
+                  </p>
+                  <p className="border-l-4 border-blue-400 pl-4">
+                     Branding • SEO • Marketing • Content
+                  </p>
+               </motion.div>
+            </div>
 
-                  {/* Underline */}
-                  <motion.div
-                     className="w-16 h-1 bg-purple-400 mb-8"
-                     initial={{ width: 0 }}
-                     animate={{ width: 64 }}
-                     transition={{ duration: 1, delay: 0.6 }}
-                  />
-
-                  {/* Main Description */}
-                  <motion.div
-                     className="space-y-6"
-                     initial={{ opacity: 0, y: 30 }}
-                     animate={{ opacity: 1, y: 0 }}
-                     transition={{ duration: 1, delay: 0.8 }}
-                  >
-                     <p
-                        className="text-lg md:text-xl text-gray-200 leading-relaxed"
-                        style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
-                     >
-                        Driven by a genuine passion for not just programming,
-                        but for building and solving real-world problems. That
-                        entrepreneurial spirit, combined with your practical
-                        success in freelancing using your diverse skills, makes
-                        incredibly unique.
-                     </p>
-
-                     <p
-                        className="text-base md:text-lg leading-relaxed"
-                        style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
-                     >
-                        I craft modern full-stack web applications with{" "}
-                        <strong className="text-purple-400">
-                           React/Next.js and the MERN stack (Mongo, Express,
-                           Node).
-                        </strong>
-                        <br />
-                        My unique journey as a self-taught developer is fueled
-                        by an entrepreneurial spirit, you can see it in action
-                        with my{" "}
-                        <strong className="text-purple-400">
-                           Mini-SaaS/Products like{" "}
-                           <a
-                              href="https://resumeonfly.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-pink-400 transition-colors"
-                           >
-                              ResumeOnFly.com
-                           </a>
-                           ,{" "}
-                           <a
-                              href="https://cvtosalary.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-pink-400 transition-colors"
-                           >
-                              CVtoSalary.com
-                           </a>
-                           , and real-time tools like{" "}
-                           <a
-                              href="https://recruitcatch.com"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                              className="underline hover:text-pink-400 transition-colors"
-                           >
-                              RecruitCatch.com
-                           </a>
-                           .
-                        </strong>
-                     </p>
-
-                     <p
-                        className="text-base md:text-lg text-gray-300 font-medium leading-relaxed"
-                        style={{ textShadow: "1px 1px 2px rgba(0,0,0,0.7)" }}
-                     >
-                        My previous background as an IT Recruiter provides keen
-                        market insight, complementing{" "}
-                        <strong className="text-purple-400">
-                           my diverse skills in Digital Marketing, SEO, Content
-                           writing, and Design,{" "}
-                        </strong>
-                        through which I've also successfully freelanced for
-                        clients.
-                     </p>
-                  </motion.div>
+            {/* Right Content - About Me Section */}
+            <motion.div
+               initial={{ opacity: 0, x: 50 }}
+               animate={{ opacity: 1, x: 0 }}
+               transition={{ duration: 0.8, delay: 0.4 }}
+               className="bg-white rounded-2xl shadow-blue-50 shadow-2xl p-8 md:p-12 space-y-6 border border-blue-100"
+            >
+               {/* Contact Info */}
+               <div className="space-y-2">
+                  <p className="text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700">
+                     Who the heck am i ?
+                  </p>
                </div>
 
-               {/* Right Content - Service Box */}
-               <div className="lg:col-span-1 space-y-8">
-                  <motion.div
-                     className="bg-white/10 backdrop-blur-md rounded-lg p-8 shadow-2xl border border-white/20"
-                     initial={{ opacity: 0, x: 50 }}
-                     animate={{ opacity: 1, x: 0 }}
-                     transition={{ duration: 1, delay: 1 }}
-                  >
-                     <div className="space-y-6">
-                        <div>
-                           <p className="text-sm font-semibold text-purple-400 uppercase tracking-wider mb-2">
-                              SERVICE
-                           </p>
-                           <h3 className="text-xl font-bold text-white mb-4">
-                              Ready to Build or Hire?
-                           </h3>
-                           <div className="w-12 h-1 bg-purple-400 mb-4" />
-                        </div>
+               {/* Divider */}
+               <div className="border-t border-gray-200 my-6"></div>
 
-                        <p className="text-gray-300 leading-relaxed text-sm">
-                           Whether you're hiring for a role or need someone to
-                           prototype and ship quickly — I can deliver.
-                           <br />I build fast, customized and responsive landing
-                           pages at prices that won't break the bank.
-                        </p>
+               {/* About Content */}
+               <div className="space-y-4 text-gray-600 leading-relaxed">
+                  <p className="text-xl">
+                     Driven by a genuine passion for building and solving
+                     real-world problems. My entrepreneurial spirit, combined
+                     with practical success in freelancing, makes my approach
+                     incredibly unique.
+                  </p>
 
-                        {/* <motion.button
-                           className="w-full px-6 py-3 bg-gradient-to-r from-red-500 to-pink-500 rounded text-white font-semibold hover:shadow-lg hover:shadow-pink-500/30 transition-all duration-300 transform hover:scale-105"
-                           whileHover={{ scale: 1.05 }}
+                  {/* <p className="text-xl">
+                     I craft modern{" "}
+                     <span className="font-semibold text-gray-800">
+                        full-stack web applications
+                     </span>{" "}
+                     with React/Next.js and the MERN stack. My journey as a
+                     self-taught developer is showcased through Mini-SaaS
+                     products like{" "}
+                     <a
+                        href="https://resumeonfly.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        ResumeOnFly
+                     </a>
+                     ,{" "}
+                     <a
+                        href="https://cvtosalary.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        CVtoSalary
+                     </a>
+                     , and{" "}
+                     <a
+                        href="https://recruitcatch.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        RecruitCatch
+                     </a>
+                     .
+                  </p> */}
+
+                  {/* <p className="text-base">
+                     My background as an{" "}
+                     <span className="font-semibold text-gray-800">
+                        IT Recruiter
+                     </span>{" "}
+                     provides keen market insight, complementing my diverse
+                     skills in{" "}
+                     <span className="font-semibold text-gray-800">
+                        Digital Marketing, SEO, Content Writing, and Design
+                     </span>
+                     —through which I've successfully freelanced for clients
+                     worldwide.
+                  </p> */}
+
+                  {/* <div className="pt-4">
+                     <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+                        Ready to Build or Hire?
+                     </p>
+                     <p className="text-base text-gray-700">
+                        Whether you're hiring or need someone to prototype and
+                        ship quickly—I can deliver. I build fast, customized,
+                        and responsive solutions at competitive prices.
+                     </p>
+                  </div> */}
+               </div>
+
+               {/* Social Links */}
+               <div className="pt-6">
+                  <div className="flex gap-4 justify-start text-align-center items-center">
+                     {[
+                        {
+                           icon: Github,
+                           label: "GitHub",
+                           href: "https://github.com/Bharath-Dubbaka",
+                           color: "hover:bg-gray-800 hover:text-white",
+                        },
+                        {
+                           icon: Linkedin,
+                           label: "LinkedIn",
+                           href: "https://www.linkedin.com/in/bharath-kumar-4bb399208/",
+                           color: "hover:bg-blue-600 hover:text-white",
+                        },
+                        {
+                           icon: Twitter,
+                           label: "Twitter",
+                           href: "https://x.com/reach__Bharath",
+                           color: "hover:bg-blue-400 hover:text-white",
+                        },
+                        {
+                           icon: Mail,
+                           label: "Email",
+                           onClick: () => scrollToSection("contact"),
+                           color: "hover:bg-red-500 hover:text-white",
+                        },
+                     ].map((social) => (
+                        <motion.a
+                           key={social.label}
+                           href={social.href}
+                           onClick={social.onClick}
+                           target={social.href ? "_blank" : undefined}
+                           rel={social.href ? "noopener noreferrer" : undefined}
+                           aria-label={social.label}
+                           className={`w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-700 transition-all ${social.color}`}
+                           whileHover={{ scale: 1.1 }}
                            whileTap={{ scale: 0.95 }}
                         >
-                           Get started
-                        </motion.button> */}
-                        {/* Social Links */}
-                        <motion.div
-                           className=" rounded-lg p-4 md:p-6 shadow-xl bg-gradient-to-r from-purple-500 to-pink-500"
-                           initial={{ opacity: 0, x: 50 }}
-                           animate={{ opacity: 1, x: 0 }}
-                           transition={{ duration: 1, delay: 1.2 }}
+                           <social.icon className="w-5 h-5" />
+                        </motion.a>
+                     ))}
+                     {/* Contact Info */}
+                     <div className="space-y-2">
+                        {/* <a
+                           href="mailto:bharathdubbaka@gmail.com"
+                           className="text-gray-700 hover:text-blue-600 transition-colors text-lg font-medium block"
                         >
-                           <div className="grid grid-cols-4 gap-4">
-                              {[
-                                 {
-                                    icon: TwitterIcon,
-                                    label: "Twitter",
-                                    color: "text-blue-500",
-                                    href: "https://x.com/reach__Bharath",
-                                 },
-                                 {
-                                    icon: Mail,
-                                    label: "Email",
-                                    color: "text-red-500",
-                                    onClick: () => scrollToSection("contact"), // Pass "contact" as the sectionId
-                                 },
-                                 {
-                                    icon: Linkedin,
-                                    label: "LinkedIn",
-                                    color: "text-red-500",
-                                    href: "https://www.linkedin.com/in/bharath-kumar-4bb399208/",
-                                 },
-                                 {
-                                    icon: Github,
-                                    label: "GitHub",
-                                    color: "text-gray-800",
-                                    href: "https://github.com/Bharath-Dubbaka",
-                                 },
-                              ].map((social, index) => {
-                                 const isEmail =
-                                    !social.href && social.label === "Email"; // detect non-link social item
-
-                                 return (
-                                    <motion.a
-                                       key={social.label}
-                                       href={social.href || undefined}
-                                       onClick={social.onClick || undefined} // now handled!
-                                       target={
-                                          social.href ? "_blank" : undefined
-                                       }
-                                       rel={
-                                          social.href
-                                             ? "noopener noreferrer"
-                                             : undefined
-                                       }
-                                       aria-label={social.label}
-                                       className="flex flex-col items-center space-y-2 p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
-                                       whileHover={{ scale: 1.1 }}
-                                       whileTap={{ scale: 0.95 }}
-                                       initial={{ opacity: 0, y: 20 }}
-                                       animate={{ opacity: 1, y: 0 }}
-                                       transition={{
-                                          duration: 0.5,
-                                          delay: 1.4 + index * 0.1,
-                                       }}
-                                    >
-                                       <div className="w-8 h-8 md:w-10 md:h-10 bg-gray-800 rounded-full flex items-center justify-center">
-                                          <social.icon className="w-5 h-5 text-white" />
-                                       </div>
-                                       <span className="text-xs md:text-sm font-medium text-white">
-                                          {social.label}
-                                       </span>
-                                    </motion.a>
-                                 );
-                              })}{" "}
-                           </div>
-                        </motion.div>
+                           bharathdubbaka@gmail.com
+                        </a> */}
+                        <p className="text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700">
+                           View My Portfolio
+                        </p>
                      </div>
-                  </motion.div>
+                  </div>
                </div>
-            </div>
-         </motion.div>
+            </motion.div>
+         </div>
 
-         {/* Add some additional shadow overlay for better text readability */}
-         <div className="absolute inset-0 bg-black/20 z-5"></div>
+         {/* Decorative Navigation Dots */}
+         <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.2 }}
+            className="fixed right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4"
+         >
+            {[...Array(5)].map((_, i) => (
+               <div
+                  key={i}
+                  className={`w-3 h-3 rounded-full border-2 transition-colors ${
+                     i === 0
+                        ? "bg-blue-600 border-blue-600"
+                        : "border-gray-300 hover:border-blue-400"
+                  }`}
+               ></div>
+            ))}
+         </motion.div>
       </section>
    );
 }

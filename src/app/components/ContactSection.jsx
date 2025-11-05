@@ -81,12 +81,12 @@ const Contact = () => {
    return (
       <section
          id="contact"
-         className="min-h-screen bg-gradient-to-b from-gray-800 to-black pb-20 pt-16 md:pt-20"
+         className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-16 md:pt-20"
       >
          <Toaster position="top-center" />
          <motion.div ref={titleRef} style={{ y }}>
             <motion.h2
-               className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent text-center"
+               className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-700 bg-clip-text text-transparent text-center"
                initial={{ opacity: 0, y: 50 }}
                animate={titleInView ? { opacity: 1, y: 0 } : {}}
                transition={{ duration: 0.8 }}
@@ -95,7 +95,7 @@ const Contact = () => {
             </motion.h2>
             {/* Visible on mobile and tablet only (hidden on lg and up) */}
             <motion.p
-               className="block lg:hidden text-xl text-gray-400 mb-6 mx-6 md:mx-16  text-center"
+               className="block lg:hidden text-xl text-gray-800 mb-6 mx-6 md:mx-16  text-center"
                initial={{ opacity: 0, y: 30 }}
                animate={titleInView ? { opacity: 1, y: 0 } : {}}
                transition={{ duration: 0.8, delay: 0.2 }}
@@ -111,11 +111,11 @@ const Contact = () => {
                <form
                   ref={form}
                   onSubmit={sendEmail}
-                  className="w-full bg-white/5 backdrop-blur-md border border-white/10 shadow-xl rounded-xl px-6 py-8 space-y-6 "
+                  className="w-full bg-gray-200/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-xl px-6 py-8 space-y-6 "
                >
                   {/* All fields remain unchanged */}
                   <div>
-                     <label className="block mb-1 font-semibold text-white">
+                     <label className="block mb-1 font-semibold text-gray-800">
                         *Full Name
                      </label>
                      <input
@@ -131,7 +131,7 @@ const Contact = () => {
                      )}
                   </div>
                   <div>
-                     <label className="block mb-1 font-semibold text-white">
+                     <label className="block mb-1 font-semibold text-gray-800">
                         *Email
                      </label>
                      <input
@@ -147,7 +147,7 @@ const Contact = () => {
                      )}
                   </div>
                   <div>
-                     <label className="block mb-1 font-semibold text-white">
+                     <label className="block mb-1 font-semibold text-gray-800">
                         *Subject
                      </label>
                      <input
@@ -163,7 +163,7 @@ const Contact = () => {
                      )}
                   </div>
                   <div>
-                     <label className="block mb-1 font-semibold text-white">
+                     <label className="block mb-1 font-semibold text-gray-800">
                         *Message
                      </label>
                      <textarea
