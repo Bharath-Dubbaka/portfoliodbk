@@ -81,6 +81,7 @@ const Contact = () => {
    return (
       <section
          id="contact"
+         ref={ref}
          className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-16 md:pt-20"
       >
          <Toaster position="top-center" />

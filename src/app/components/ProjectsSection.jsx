@@ -2,6 +2,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
+import { LayoutGrid } from "../ui/layout-grid";
+import { LayoutGridDemo } from "../ui/LayoutGridDemo";
 
 export default function ProjectsSection() {
    const ref = useRef(null);
@@ -90,14 +92,14 @@ export default function ProjectsSection() {
          id="projects"
          // className="min-h-screen bg-gradient-to-b from-gray-800 to-black pb-20 pt-16 md:pt-40"
 
-         className="min-h-screen bg-gradient-to-b from-gray-200/95 to-gray-100 pb-4 md:pb-20 pt-16 md:pt-4"
+         className="min-h-screen bg-gray-100 "
       >
          <div className="container mx-auto px-6">
             {/* Section title */}
             <motion.div
                ref={titleRef}
                style={{ y }}
-               className="text-center mb-16  pt-10"
+               className="text-center mb-2 pt-10"
             >
                <motion.h2
                   className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-700 bg-clip-text text-transparent"
@@ -118,8 +120,11 @@ export default function ProjectsSection() {
                </motion.p>
             </motion.div>
 
-            {/* Projects grid */}
-            <div
+            {/* Projects grid NEW*/}
+            <LayoutGridDemo />
+
+            {/* Projects grid OLD*/}
+            {/* <div
                ref={cardsRef}
                className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
@@ -137,7 +142,6 @@ export default function ProjectsSection() {
                      transition={{ duration: 0.3, delay: index * 0.2 }}
                      whileHover={{ y: -10, scale: 1.02 }}
                   >
-                     {/* Project image/icon */}
                      {index < 2 && (
                         <span className="absolute top-3 right-3 bg-yellow-400 text-black px-3 py-1 text-xs font-bold rounded-full animate-pulse z-10 shadow-md">
                            Featured
@@ -151,7 +155,6 @@ export default function ProjectsSection() {
                         />
                      </div>
 
-                     {/* Project content */}
                      <h3 className="text-2xl font-bold mb-3 text-white group-hover:text-purple-400 transition-colors">
                         {project.title}
                      </h3>
@@ -160,7 +163,6 @@ export default function ProjectsSection() {
                         {project.description}
                      </p>
 
-                     {/* Tech stack */}
                      <div className="flex flex-wrap gap-2 mb-6">
                         {project.tech.map((tech) => (
                            <span
@@ -172,7 +174,6 @@ export default function ProjectsSection() {
                         ))}
                      </div>
 
-                     {/* Project links */}
                      <div className="flex gap-4">
                         <motion.a
                            href={project.github}
@@ -198,11 +199,10 @@ export default function ProjectsSection() {
                         </motion.a>
                      </div>
 
-                     {/* Hover effect overlay */}
                      <div className="absolute inset-0 bg-gradient-to-r from-purple-600/10 to-pink-600/10 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none" />
                   </motion.div>
                ))}
-            </div>
+            </div> */}
          </div>
       </section>
    );

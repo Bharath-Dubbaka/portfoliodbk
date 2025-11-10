@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Github, Mail, Linkedin, Twitter } from "lucide-react";
+import { PixelatedCanvasDemo } from "../ui/PixelatedCanvasDemo";
 
 export default function HeroSection() {
    const scrollToSection = (sectionId) => {
@@ -68,8 +69,9 @@ export default function HeroSection() {
                initial={{ opacity: 0, x: 50 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.8, delay: 0.4 }}
-               className="bg-white rounded-2xl shadow-blue-50 shadow-2xl p-8 md:p-12 space-y-6 border border-blue-100"
+               className="bg-white rounded-2xl shadow-xl p-8 md:pt-2 md:px-12 space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out"
             >
+               <PixelatedCanvasDemo />
                {/* Contact Info */}
                <div className="space-y-2">
                   <p className="text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700">
@@ -126,19 +128,23 @@ export default function HeroSection() {
                      .
                   </p> */}
 
-                  {/* <p className="text-base">
+                  <p className="text-xl">
                      My background as an{" "}
-                     <span className="font-semibold text-gray-800">
+                     <span
+                     // className="font-semibold text-gray-800"
+                     >
                         IT Recruiter
                      </span>{" "}
                      provides keen market insight, complementing my diverse
                      skills in{" "}
-                     <span className="font-semibold text-gray-800">
+                     <span
+                     // className="font-semibold text-gray-800"
+                     >
                         Digital Marketing, SEO, Content Writing, and Design
                      </span>
                      —through which I've successfully freelanced for clients
                      worldwide.
-                  </p> */}
+                  </p>
 
                   {/* <div className="pt-4">
                      <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
@@ -153,7 +159,7 @@ export default function HeroSection() {
                </div>
 
                {/* Social Links */}
-               <div className="pt-6">
+               <div className="pt-2">
                   <div className="flex gap-4 justify-start text-align-center items-center">
                      {[
                         {
