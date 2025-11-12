@@ -25,11 +25,14 @@ export const LayoutGrid = ({ cards }) => {
    }
 
    return (
-      <div className="min-w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl md:max-w-[90%] mx-auto gap-4 relative ">
+      <div className="w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl sm:max-w-[80%] mx-auto gap-3 relative">
          {cards.map((card, i) => (
             <div
                key={i}
-               className={cn(card.className, "bg-blue-100 border-none")}
+               className={cn(
+                  card.className,
+                  "bg-blue-100 border-none  hover:shadow-lg shadow-blue-200 min-h-[16rem]  sm:min-h-[20rem]"
+               )}
             >
                <motion.div
                   onClick={() => handleClick(card)}
@@ -37,7 +40,7 @@ export const LayoutGrid = ({ cards }) => {
                      card.className,
                      "relative overflow-hidden ",
                      selected?.id === card.id
-                        ? "rounded-lg cursor-pointer absolute border-none inset-0 h-1/2 w-full md:w-[75%] md:h-[60%] m-auto z-50 flex justify-center items-center flex-wrap flex-col"
+                        ? "rounded-lg cursor-pointer absolute border-none inset-0 h-1/2 w-full md:w-[75%] md:h-[80%] m-auto z-50 flex justify-center items-center flex-wrap flex-col"
                         : lastSelected?.id === card.id
                         ? "z-40 bg-white  h-full w-full  "
                         : "bg-white h-full w-full  "
@@ -64,23 +67,50 @@ export const LayoutGrid = ({ cards }) => {
 };
 
 const ImageComponent = ({ card }) => {
+   const [isHovered, setIsHovered] = useState(false);
+   console.log(card, "Card from imgCompoenent");
    return (
-      <motion.img
-         layoutId={`image-${card.id}-image`}
-         src={card.thumbnail}
-         height="500"
-         width="500"
-         className={cn(
-            "object-cover object-top absolute inset-0 h-full w-full transition duration-200"
-         )}
-         alt="thumbnail"
-      />
+      <div
+         className="w-full h-full"
+         onMouseEnter={() => setIsHovered(true)}
+         onMouseLeave={() => setIsHovered(false)}
+      >
+         <motion.img
+            layoutId={`image-${card.id}-image`}
+            src={card.thumbnail}
+            height="500"
+            width="500"
+            className={`object-cover  object-top absolute inset-0 h-full w-full transition-all duration-900 ${
+               isHovered ? "blur-xs scale-100 " : ""
+            }`}
+            // className={cn(
+            //    "object-cover object-top absolute inset-0 h-full w-full transition duration-200"
+            // )}
+            alt="thumbnail"
+         />
+
+         {/* Overlay for hover and mobile */}
+         <div
+            className={`absolute inset-0 bg-black/10 backdrop-blur-xs sm:backdrop-blur-sm transition-opacity duration-300 flex flex-col items-center justify-center p-6 ${
+               isHovered
+                  ? "opacity-100 md:opacity-100 bg-black/20"
+                  : "opacity-100 md:opacity-0"
+            }`}
+         >
+            <h3 className="text-white text-2xl md:text-3xl font-bold mb-4 text-center">
+               {card?.content?.props?.project?.title}
+            </h3>
+            <button className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors">
+               View More
+            </button>
+         </div>
+      </div>
    );
 };
 
 const SelectedCard = ({ selected }) => {
    return (
-      <div className="bg-transparent h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+      <div className="bg-black/10 backdrop-blur-xs h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
          <motion.div
             initial={{
                opacity: 0,

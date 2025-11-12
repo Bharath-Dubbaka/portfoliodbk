@@ -114,7 +114,7 @@ export function LayoutGridDemo() {
    }));
 
    return (
-      <div className="h-screen py-10 w-full">
+      <div className="min-h-screen py-10 w-full">
          <LayoutGrid cards={cardsArr} />
       </div>
    );

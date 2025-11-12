@@ -82,30 +82,28 @@ const Contact = () => {
       <section
          id="contact"
          ref={ref}
-         className="min-h-screen bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-16 md:pt-20"
+         className="min-h-screen bg-gray-100  bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-16 md:pt-20"
       >
-         <Toaster position="top-center" />
-         <motion.div ref={titleRef} style={{ y }}>
-            <motion.h2
-               className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-700 bg-clip-text text-transparent text-center"
-               initial={{ opacity: 0, y: 50 }}
-               animate={titleInView ? { opacity: 1, y: 0 } : {}}
-               transition={{ duration: 0.8 }}
-            >
-               Get in Touch
-            </motion.h2>
-            {/* Visible on mobile and tablet only (hidden on lg and up) */}
-            <motion.p
-               className="block lg:hidden text-xl text-gray-800 mb-6 mx-6 md:mx-16  text-center"
-               initial={{ opacity: 0, y: 30 }}
-               animate={titleInView ? { opacity: 1, y: 0 } : {}}
-               transition={{ duration: 0.8, delay: 0.2 }}
-            >
-               Have a project, freelance opportunity, or just want to say hi?
-               Drop a message and I will respond within 24 hours.
-            </motion.p>
-         </motion.div>
-
+         <div className="container mx-auto px-6 ">
+            <Toaster position="top-center" />
+            <motion.div ref={titleRef} style={{ y }}>
+               <motion.div
+                  className=" mt-16 bg-gradient-to-r from-blue-600 to-purple-600 p-8 rounded-2xl text-white text-center max-w-4xl mx-auto"
+                  // initial={{ opacity: 0, y: 30 }}
+                  // animate={{ opacity: 1, y: 0 }}
+                  // transition={{ delay: 0.9 }}
+               >
+                  <h3 className="text-2xl md:text-3xl font-bold mb-3">
+                     Ready to Build or Hire?
+                  </h3>
+                  <p className="text-lg text-blue-100 max-w-3xl mx-auto">
+                     Whether you're hiring or need someone to prototype and ship
+                     quickly—I can deliver. I build fast, customized, and
+                     responsive solutions at competitive prices.
+                  </p>
+               </motion.div>
+            </motion.div>
+         </div>
          <div className="flex flex-col lg:flex-row items-center justify-center gap-10 lg:gap-20 px-6">
             {/* Left: Form + Headings */}
             <div className="w-full md:w-[65%] flex flex-col items-center lg:text-left lg:items-start max-w-xl ">

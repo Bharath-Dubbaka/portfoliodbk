@@ -4,6 +4,7 @@ import { useState, useEffect, useRef } from "react"; // Added useRef
 import Lenis from "@studio-freight/lenis";
 import HeroSection from "./components/HeroSection";
 import ContactSection from "./components/ContactSection";
+import AboutSection from "./components/AboutSection";
 import ProjectsSection from "./components/ProjectsSection";
 import Navigation from "./components/Navigation";
 
@@ -104,6 +105,7 @@ export default function Home() {
          />
          <HeroSection scrollToSection={scrollToSection} />
          <ProjectsSection />
+         <AboutSection />
          <ContactSection />
       </div>
    );

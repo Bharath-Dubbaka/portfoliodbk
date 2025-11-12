@@ -8,6 +8,7 @@ export default function Navigation({
    const sections = [
       { id: "hero", label: "Home" },
       { id: "projects", label: "Projects" },
+      { id: "about", label: "About" },
       { id: "contact", label: "Contact" },
    ];
 

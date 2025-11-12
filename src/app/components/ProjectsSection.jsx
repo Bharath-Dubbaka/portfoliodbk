@@ -6,13 +6,18 @@ import { LayoutGrid } from "../ui/layout-grid";
 import { LayoutGridDemo } from "../ui/LayoutGridDemo";
 
 export default function ProjectsSection() {
-   const ref = useRef(null);
-   const { scrollYProgress } = useScroll({
-      target: ref,
-      offset: ["start end", "end start"],
+   const [ref, inView] = useInView({
+      threshold: 0.2,
+      triggerOnce: true,
    });
 
-   const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
+   // const ref = useRef(null);
+   // const { scrollYProgress } = useScroll({
+   //    target: ref,
+   //    offset: ["start end", "end start"],
+   // });
+
+   // const y = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]);
 
    const [titleRef, titleInView] = useInView({
       threshold: 0.3,
@@ -94,34 +99,47 @@ export default function ProjectsSection() {
 
          className="min-h-screen bg-gray-100 "
       >
+         {/* PROJECTS */}
          <div className="container mx-auto px-6">
             {/* Section title */}
             <motion.div
-               ref={titleRef}
-               style={{ y }}
-               className="text-center mb-2 pt-10"
+               ref={ref}
+               initial={{ opacity: 0, y: 50 }}
+               animate={inView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.6 }}
+               className="text-center"
             >
                <motion.h2
-                  className="text-5xl md:text-6xl font-bold mb-4 bg-gradient-to-r from-blue-800 to-blue-700 bg-clip-text text-transparent"
-                  initial={{ opacity: 0, y: 50 }}
-                  animate={titleInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8 }}
+                  className="text-4xl md:text-6xl lg:text-7xl font-black leading-tight"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 }}
                >
-                  MY WORK
+                  <span className="text-blue-600/90">MY WORK</span>
                </motion.h2>
                <motion.p
-                  className="text-xl text-gray-800 max-w-2xl mx-auto"
-                  initial={{ opacity: 0, y: 30 }}
-                  animate={titleInView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.8, delay: 0.2 }}
+                  className="text-xl md:text-xl lg:text-xl font-black leading-tight"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.3 }}
                >
-                  Here are some of my recent projects that showcase my skills
-                  and passion for development
+                  <span className="text-xl font-semibold text-gray-600 leading-relaxed">
+                     Here are some of my recent projects that showcase my skills
+                     and passion for development
+                  </span>
                </motion.p>
             </motion.div>
 
             {/* Projects grid NEW*/}
-            <LayoutGridDemo />
+            <motion.div
+               ref={ref}
+               initial={{ opacity: 0, y: 50 }}
+               animate={inView ? { opacity: 1, y: 0 } : {}}
+               transition={{ duration: 0.6 }}
+               className="text-center"
+            >
+               <LayoutGridDemo />
+            </motion.div>
 
             {/* Projects grid OLD*/}
             {/* <div
@@ -204,6 +222,93 @@ export default function ProjectsSection() {
                ))}
             </div> */}
          </div>
+
+         {/* ABOUT */}
+         {/* <div className="container mx-auto px-6 w-full h-full md:p-2 md:max-w-[80%]">
+            <div className="space-y-2">
+               <p className="text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700">
+                  Who the heck am i ?
+               </p>
+            </div>
+
+            <div className="border-t border-gray-200 my-6"></div>
+
+
+            <div className="space-y-4 text-gray-600 leading-relaxed">
+               <p className="text-xl">
+                  Driven by a genuine passion for building and solving
+                  real-world problems. My entrepreneurial spirit, combined with
+                  practical success in freelancing, makes my approach incredibly
+                  unique.
+               </p> */}
+
+         {/* <p className="text-xl">
+                     I craft modern{" "}
+                     <span className="font-semibold text-gray-800">
+                        full-stack web applications
+                     </span>{" "}
+                     with React/Next.js and the MERN stack. My journey as a
+                     self-taught developer is showcased through Mini-SaaS
+                     products like{" "}
+                     <a
+                        href="https://resumeonfly.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        ResumeOnFly
+                     </a>
+                     ,{" "}
+                     <a
+                        href="https://cvtosalary.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        CVtoSalary
+                     </a>
+                     , and{" "}
+                     <a
+                        href="https://recruitcatch.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-600 hover:text-blue-700 font-medium underline"
+                     >
+                        RecruitCatch
+                     </a>
+                     .
+                  </p> */}
+
+         {/* <p className="text-xl">
+                  My background as an{" "}
+                  <span
+                  // className="font-semibold text-gray-800"
+                  >
+                     IT Recruiter
+                  </span>{" "}
+                  provides keen market insight, complementing my diverse skills
+                  in{" "}
+                  <span
+                  // className="font-semibold text-gray-800"
+                  >
+                     Digital Marketing, SEO, Content Writing, and Design
+                  </span>
+                  —through which I've successfully freelanced for clients
+                  worldwide.
+               </p> */}
+
+         {/* <div className="pt-4">
+                     <p className="text-sm font-semibold text-blue-600 uppercase tracking-wide mb-2">
+                        Ready to Build or Hire?
+                     </p>
+                     <p className="text-base text-gray-700">
+                        Whether you're hiring or need someone to prototype and
+                        ship quickly—I can deliver. I build fast, customized,
+                        and responsive solutions at competitive prices.
+                     </p>
+                  </div> */}
+         {/* </div> */}
+         {/* </div> */}
       </section>
    );
 }
