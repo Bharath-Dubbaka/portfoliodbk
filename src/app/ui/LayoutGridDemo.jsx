@@ -11,10 +11,10 @@ import { ExternalLink, Github } from "lucide-react";
 const ProjectCard = ({ project }) => {
    return (
       <div className="bg-gradient-to-b ">
-         <p className="font-bold md:text-5xl text-xl text-white mb-2">
+         <p className="font-bold text-4xl md:text-5xl text-start text-white mb-2">
             {project.title}
          </p>
-         <p className="font-normal text-xl my-4 max-w-lg text-white">
+         <p className="font-normal text-xl my-4 max-w-lg text-white text-start">
             {project.description}
          </p>
 
@@ -23,7 +23,7 @@ const ProjectCard = ({ project }) => {
             {project.tech.map((tech, idx) => (
                <span
                   key={idx}
-                  className="px-4 py-3 bg-blue-600 text-white font-bold rounded-full text-base border border-purple-500/40"
+                  className="px-2 py-2 md:px-4 md:py-3 bg-blue-600 text-white font-bold rounded-full text-base border border-purple-500/40"
                >
                   {tech}
                </span>
@@ -36,7 +36,7 @@ const ProjectCard = ({ project }) => {
                href={project.github}
                target="_blank"
                rel="noopener noreferrer"
-               className="flex items-center gap-2 px-8 py-4 bg-gray-700/80 hover:bg-gray-600 rounded-lg text-white text-lg font-bold transition-colors"
+               className="flex items-center gap-2 bg-gray-700/80 hover:bg-gray-600 rounded-lg text-white text-base font-bold transition-colors px-2 py-2 md:px-8 md:py-4 md:text-lg"
             >
                <Github size={24} />
                Code
@@ -58,7 +58,7 @@ const ProjectCard = ({ project }) => {
 export function LayoutGridDemo() {
    const projects = [
       {
-         title: "LoveatFirstBite - Demo",
+         title: "LoveatFirstBite",
          description:
             "Restaurant and cafe management application with full MERN stack implementation",
          image: "/assets/projectImgs/Img_firstbite.png",
@@ -77,16 +77,16 @@ export function LayoutGridDemo() {
       },
 
       {
-         title: "RecruitCatch.com - 1K active users",
+         title: "RecruitCatch.com",
          description:
-            "FREE XRay Search Tool built for Recruiters to find publicly available profiles on LinkedIn (without any limitations) to match/meet their Job requirements",
+            "1K active users - FREE XRay Search Tool built for Recruiters to find publicly available profiles on LinkedIn (without any limitations) to match/meet their Job requirements",
          image: "/assets/projectImgs/Img_recruitcatch.png",
          tech: ["Next.js", "React.js", "Tailwind CSS", "Google API"],
          github: "https://github.com/Bharath-Dubbaka/recruitNinja",
          live: "https://recruitcatch.com/",
       },
       {
-         title: "ResumeOnFly.com - SaaS",
+         title: "ResumeOnFly - SaaS",
          description:
             "Built from Scratch: Built for busy job seekers — upload your master resume once, and customize it for every job in a few clicks.",
          image: "/assets/projectImgs/Img_resumeonflyTwo.png",
@@ -109,7 +109,10 @@ export function LayoutGridDemo() {
    const cardsArr = projects.map((project, index) => ({
       id: index + 1,
       content: <ProjectCard project={project} />,
-      className: index === 0 || index === 3 ? "md:col-span-2 border-5 border-blue-700/80" : "col-span-1 border-5 border-blue-700/80",
+      className:
+         index === 0 || index === 3
+            ? "md:col-span-2 border-5 border-blue-700/80 rounded-lg"
+            : "col-span-1 border-5 border-blue-700/80 rounded-lg",
       thumbnail: project.image,
    }));
 
@@ -119,5 +122,3 @@ export function LayoutGridDemo() {
       </div>
    );
 }
-
-

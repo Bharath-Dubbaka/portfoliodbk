@@ -13,7 +13,7 @@ export default function HeroSection() {
    return (
       <section
          id="hero"
-         className=" min-h-screen bg-gray-100 flex items-center justify-center px-6 pt-2"
+         className="min-h-screen bg-gray-100 flex items-center justify-center px-6 pt-2"
       >
          <div className="max-w-[85%] w-full grid lg:grid-cols-2 gap-4 items-center">
             {/* Left Content - Name and Taglines */}
@@ -26,10 +26,10 @@ export default function HeroSection() {
                   className="text-4xl md:text-6xl lg:text-7xl leading-tight"
                >
                   <h1 className=" text-7xl md:text-8xl lg:text-8xl font-black leading-none tracking-tight">
-                     <span className="block bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">
+                     <span className="font-sans block bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">
                         BHARATH
                      </span>
-                     <span className="block bg-gradient-to-r from-gray-800  to-gray-600 bg-clip-text text-transparent">
+                     <span className="font-sans block bg-gradient-to-r from-gray-800  to-gray-600 bg-clip-text text-transparent">
                         DUBBAKA
                      </span>
                   </h1>

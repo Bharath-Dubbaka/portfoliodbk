@@ -23,7 +23,7 @@ export default function Navigation({
 
    return (
       <motion.nav
-         className="fixed top-4 right-2 md:top-8 md:right-8 z-50 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10"
+         className="hidden sm:block fixed top-4 right-2 md:top-8 md:right-8 z-50 bg-black/20 backdrop-blur-md rounded-full p-2 border border-white/10"
          initial={{ opacity: 0, x: 50 }}
          animate={{ opacity: 1, x: 0 }}
          transition={{ duration: 0.8, delay: 1 }}
