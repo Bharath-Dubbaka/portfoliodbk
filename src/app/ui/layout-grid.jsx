@@ -36,7 +36,7 @@ export const LayoutGrid = ({ cards }) => {
             animate={{ opacity: selected?.id ? 0.5 : 0 }}
          />
 
-         <div className="w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl sm:max-w-[80%] mx-auto gap-3 relative">
+         <div className="w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl lg:max-w-[85%] mx-auto gap-5 md:gap-3 relative">
             {cards.map((card, i) => (
                <div
                   key={i}

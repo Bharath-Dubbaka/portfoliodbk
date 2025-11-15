@@ -60,9 +60,9 @@ export function LayoutGridDemo() {
       {
          title: "LoveatFirstBite",
          description:
-            "Restaurant and cafe management application with full MERN stack implementation",
+            "Restaurant and cafe management application with full MERN stack implementation, with user authentication and admin panel for managing bookings/orders, dynamic menu with order processing,",
          image: "/assets/projectImgs/Img_firstbite.png",
-         tech: ["MERN", "Mongoose", "TailwindCSS"],
+         tech: ["MERN", "Mongoose", "TailwindCSS", "JWT Auth"],
          github: "https://github.com/Bharath-Dubbaka/firstbite-node",
          live: "http://16-171-150-110.nip.io/",
       },
@@ -71,7 +71,7 @@ export function LayoutGridDemo() {
          description:
             "Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
          image: "/assets/projectImgs/Img_cvtosalary.png",
-         tech: ["Next.js", "Typescript", "Tailwind CSS", "AceternityUI"],
+         tech: ["Next.js", "Typescript", "Tailwind CSS", "Aceternity UI"],
          github: "https://github.com/Bharath-Dubbaka/CvtoSalary-aceternity",
          live: "https://cvtosalary.com/",
       },
@@ -94,27 +94,44 @@ export function LayoutGridDemo() {
          github: "https://github.com/Bharath-Dubbaka/ResumeMaxxing",
          live: "https://resumeonfly.com/",
       },
-      //   {
-      //      title: "NetflixGPT",
-      //      description:
-      //         "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
-      //      image: "/assets/projectImgs/Img_NetflixGPT.png",
-      //      tech: ["React", "Tailwind", "TMDB API", "Youtube API", "OpenAI"],
-      //      github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
-      //      live: "https://moviesflixgpt.netlify.app",
-      //   },
+      {
+         title: "BackpackerIndia",
+         description:
+            "Travel agency website for booking and exploring travel packages across India destinations, and user inquiries, built using the wordpress stack and supported with SEO / SMM / Content Writing.",
+         image: "/assets/projectImgs/Img_backpackerindia.png",
+         tech: ["Wordpress", "Branding", "SEO", "SMM", "Content writing"],
+         github: "https://github.com/Bharath-Dubbaka/",
+         live: "https://backpackerindia.com//",
+      },
+      {
+         title: "NetflixGPT",
+         description:
+            "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
+         image: "/assets/projectImgs/Img_NetflixGPT.png",
+         tech: ["React", "Tailwind", "TMDB API", "Youtube API", "OpenAI"],
+         github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
+         live: "https://moviesflixgpt.netlify.app",
+      },
    ];
 
-   // Transform projects into cards format for LayoutGrid
-   const cardsArr = projects.map((project, index) => ({
-      id: index + 1,
-      content: <ProjectCard project={project} />,
-      className:
-         index === 0 || index === 3
-            ? "md:col-span-2 border-5 border-blue-700/80 rounded-lg"
-            : "col-span-1 border-5 border-blue-700/80 rounded-lg",
-      thumbnail: project.image,
-   }));
+   // Transform projects into cards format for LayoutGrid ZigZag
+   const cardsArr = projects.map((project, index) => {
+      let className = "col-span-1 border-[5px] border-blue-700/80 rounded-lg";
+
+      if (index === 0)
+         className = "md:col-span-2 border-[5px] border-blue-700/80 rounded-lg"; // card 1
+      if (index === 3)
+         className = "md:col-span-2 border-[5px] border-blue-700/80 rounded-lg"; // card 4
+      if (index === 4)
+         className = "md:col-span-2 border-[5px] border-blue-700/80 rounded-lg"; // card 5
+
+      return {
+         id: index + 1,
+         content: <ProjectCard project={project} />,
+         className,
+         thumbnail: project.image,
+      };
+   });
 
    return (
       <div className="min-h-screen py-10 w-full">

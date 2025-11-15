@@ -13,11 +13,11 @@ export default function HeroSection() {
    return (
       <section
          id="hero"
-         className="min-h-screen bg-gray-100 flex items-center justify-center px-6 pt-2"
+         className="min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 md:pt-2 pb-12 md:pb-10"
       >
-         <div className="max-w-[85%] w-full grid lg:grid-cols-2 gap-4 items-center">
+         <div className="max-w-full md:max-w-[98%] lg:max-w-[85%] w-full grid lg:grid-cols-2 gap-6 md:gap-4 items-center">
             {/* Left Content - Name and Taglines */}
-            <div className="space-y-8">
+            <div className="space-y-6 md:space-y-8">
                {/* Main Name with Gradient Effect */}
                <motion.div
                   initial={{ opacity: 0, x: -50 }}
@@ -25,24 +25,14 @@ export default function HeroSection() {
                   transition={{ duration: 0.8 }}
                   className="text-4xl md:text-6xl lg:text-7xl leading-tight"
                >
-                  <h1 className=" text-7xl md:text-8xl lg:text-8xl font-black leading-none tracking-tight">
+                  <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-8xl font-black leading-none tracking-tight">
                      <span className="font-sans block bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">
                         BHARATH
                      </span>
-                     <span className="font-sans block bg-gradient-to-r from-gray-800  to-gray-600 bg-clip-text text-transparent">
+                     <span className="font-sans block bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
                         DUBBAKA
                      </span>
                   </h1>
-
-                  {/* Hover me text */}
-                  {/* <motion.p
-                     initial={{ opacity: 0 }}
-                     animate={{ opacity: 1 }}
-                     transition={{ delay: 1, duration: 0.5 }}
-                     className="absolute -bottom-2 left-0 text-sm text-gray-400 font-light italic"
-                  >
-                     Hover me ↗
-                  </motion.p> */}
                </motion.div>
 
                {/* Taglines */}
@@ -50,15 +40,15 @@ export default function HeroSection() {
                   initial={{ opacity: 0, x: -50 }}
                   animate={{ opacity: 1, x: 0 }}
                   transition={{ duration: 0.8, delay: 0.2 }}
-                  className="space-y-4 text-gray-950 font-medium text-lg md:text-xl uppercase tracking-wide leading-relaxed font-sans"
+                  className="space-y-3 md:space-y-4 text-gray-950 font-medium text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-wide leading-relaxed font-sans"
                >
-                  <p className="border-l-4 border-blue-500 pl-4">
+                  <p className="border-l-4 border-blue-500 pl-3 md:pl-4">
                      Full Stack Developer [MERN]
                   </p>
-                  <p className="border-l-4 border-gray-500 pl-4">
+                  <p className="border-l-4 border-gray-500 pl-3 md:pl-4">
                      Self Taught with Entrepreneurial Spirit
                   </p>
-                  <p className="border-l-4 border-blue-400 pl-4">
+                  <p className="border-l-4 border-blue-400 pl-3 md:pl-4">
                      Branding • SEO • Marketing • Content
                   </p>
                </motion.div>
@@ -69,14 +59,14 @@ export default function HeroSection() {
                initial={{ opacity: 0, x: 50 }}
                animate={{ opacity: 1, x: 0 }}
                transition={{ duration: 0.8, delay: 0.4 }}
-               className="bg-white rounded-2xl shadow-xl p-8 md:pt-2 md:px-12 space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out"
+               className="bg-white rounded-2xl shadow-xl px-4 pt-2 md:p-8 sm:pt-8 md:px-2 lg:px-6 space-y-4 md:space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out max-w-full"
             >
                <PixelatedCanvasDemo />
                {/* Contact Info */}
 
                {/* Social Links */}
                <div className="pt-2">
-                  <div className="flex gap-4 justify-start text-align-center items-center">
+                  <div className="pt-2 pb-6 md:pt-4 md:pb-4 flex flex-wrap gap-3 md:gap-4 justify-start items-center">
                      {[
                         {
                            icon: Github,
@@ -110,22 +100,16 @@ export default function HeroSection() {
                            target={social.href ? "_blank" : undefined}
                            rel={social.href ? "noopener noreferrer" : undefined}
                            aria-label={social.label}
-                           className={`w-12 h-12 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-700 transition-all ${social.color}`}
+                           className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-700 transition-all ${social.color}`}
                            whileHover={{ scale: 1.1 }}
                            whileTap={{ scale: 0.95 }}
                         >
-                           <social.icon className="w-5 h-5" />
+                           <social.icon className="w-4 h-4 md:w-5 md:h-5" />
                         </motion.a>
                      ))}
                      {/* Contact Info */}
-                     <div className="space-y-2">
-                        {/* <a
-                           href="mailto:bharathdubbaka@gmail.com"
-                           className="text-gray-700 hover:text-blue-600 transition-colors text-lg font-medium block"
-                        >
-                           bharathdubbaka@gmail.com
-                        </a> */}
-                        <p className="text-blue-600 font-semibold text-lg cursor-pointer hover:text-blue-700">
+                     <div className="space-y-2 w-full md:w-auto mt-0">
+                        <p className="text-blue-600 font-semibold text-base md:text-lg cursor-pointer hover:text-blue-700">
                            View My Portfolio
                         </p>
                      </div>
@@ -134,7 +118,7 @@ export default function HeroSection() {
             </motion.div>
          </div>
 
-         {/* Decorative Navigation Dots */}
+         {/* Decorative Navigation Dots - Hidden on mobile/tablet */}
          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}

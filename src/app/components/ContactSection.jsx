@@ -82,7 +82,7 @@ const Contact = () => {
       <section
          id="contact"
          ref={ref}
-         className="min-h-screen bg-gray-100  bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-16 md:pt-20"
+         className="min-h-screen bg-gray-100  bg-gradient-to-b from-gray-100 to-gray-200/95 pb-20 pt-12 md:pt-12"
       >
          <div className="container mx-auto px-6 ">
             <Toaster position="top-center" />
@@ -110,7 +110,7 @@ const Contact = () => {
                <form
                   ref={form}
                   onSubmit={sendEmail}
-                  className="w-full bg-gray-200/95 backdrop-blur-md border border-gray-200 shadow-xl rounded-xl px-6 py-8 space-y-6 "
+                  className="w-full bg-gray-200/95 backdrop-blur-md border border-gray-300 shadow-xl rounded-xl px-4 md:px-6 py-8 space-y-6 "
                >
                   {/* All fields remain unchanged */}
                   <div>

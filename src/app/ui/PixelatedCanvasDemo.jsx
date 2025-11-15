@@ -4,7 +4,7 @@ import Img_firstbite from "../../../public/assets/projectImgs/Img_firstbite.png"
 
 export function PixelatedCanvasDemo() {
    return (
-      <div className="mx-auto mt-8 overflow-x-auto">
+      <div className="mb-2 md:mx-auto items-center max-w-full">
          <PixelatedCanvas
             src="/assets/dbk.jpeg"
             width={600}
@@ -15,7 +15,7 @@ export function PixelatedCanvasDemo() {
             backgroundColor="#1a1a1a"
             dropoutStrength={0.2}
             interactive={false}
-            className="rounded-xl border border-neutral-800 shadow-lg"
+            className="rounded-xl border border-neutral-800 shadow-lg max-w-full  max-h-40 md:max-h-full object-center"
          />
       </div>
    );
