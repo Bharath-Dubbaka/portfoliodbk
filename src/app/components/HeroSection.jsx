@@ -13,7 +13,7 @@ export default function HeroSection() {
    return (
       <section
          id="hero"
-         className="min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 md:pt-2 pb-12 md:pb-10"
+         className="min-h-max md:min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 md:pt-2 pb-12 md:pb-10"
       >
          <div className="max-w-full md:max-w-[98%] lg:max-w-[85%] w-full grid lg:grid-cols-2 gap-6 md:gap-4 items-center">
             {/* Left Content - Name and Taglines */}

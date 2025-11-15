@@ -15,7 +15,7 @@ export function PixelatedCanvasDemo() {
             backgroundColor="#1a1a1a"
             dropoutStrength={0.2}
             interactive={false}
-            className="rounded-xl border border-neutral-800 shadow-lg max-w-full  max-h-40 md:max-h-full object-center"
+            className="rounded-xl border border-neutral-800 shadow-lg max-w-full  max-h-60 md:max-h-full object-center"
          />
       </div>
    );
