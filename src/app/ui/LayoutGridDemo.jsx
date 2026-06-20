@@ -1,11 +1,12 @@
 "use client";
 import React from "react";
 import { LayoutGrid } from "./layout-grid";
-import Img_cvtosalary from "../../../public/assets/projectImgs/Img_cvtosalary.png";
-import Img_firstbite2 from "../../../public/assets/projectImgs/Img_firstbite2.PNG";
-import Img_resumeonfly2 from "../../../public/assets/projectImgs/Img_resumeonfly2.PNG";
-import Img_recruitcatch from "../../../public/assets/projectImgs/Img_recruitcatch.png";
 import { ExternalLink, Github } from "lucide-react";
+
+// NOTE: project images are referenced as plain string paths (e.g. "/assets/projectImgs/...")
+// in the `projects` array below, NOT as JS imports. Next.js serves anything in `public/`
+// directly by URL path — importing files from `public/` as modules is unsupported under
+// Turbopack (Next.js 16+) and will break the build with "Unknown module type".
 
 // ──────────────────────────────────────────────────────────
 // CLOSED CARD — unchanged, exactly as it was before
