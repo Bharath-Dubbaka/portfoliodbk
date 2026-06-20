@@ -50,7 +50,7 @@ export const LayoutGrid = ({ cards }) => {
                 card.className,
                 "relative overflow-hidden ",
                 selected?.id === card.id
-                  ? "rounded-lg cursor-pointer fixed border-none top-[5%] left-[2.5%] md:top-[10%] md:left-[12.5%] w-[95%] h-[90%] md:w-[75%] md:h-[80%] z-50 flex justify-center items-center flex-wrap flex-col overflow-y-auto"
+                  ? "rounded-lg cursor-pointer fixed border-none top-[5%] left-[2.5%] md:top-[10%] md:left-[12.5%] w-[95%] h-[90%] md:w-[75%] md:h-[80%] z-50 block overflow-y-auto"
                   : lastSelected?.id === card.id
                     ? "z-40 bg-white h-full w-full"
                     : "bg-white h-full w-full",
@@ -121,14 +121,14 @@ const ImageComponent = ({ card }) => {
 
 const SelectedCard = ({ selected, onClose }) => {
   return (
-    <div className="bg-black/10 backdrop-blur-xs h-full w-full flex flex-col justify-end rounded-lg shadow-2xl relative z-[60]">
+    <div className="absolute inset-0 bg-[#0a0a0f] flex flex-col rounded-lg shadow-2xl z-[60]">
       {/* Close button (X) */}
       <button
         onClick={(e) => {
           e.stopPropagation();
           onClose();
         }}
-        className="absolute top-4 right-4 z-[80] bg-white/80 hover:bg-white rounded-full p-2 transition-colors shadow-lg"
+        className="absolute top-4 right-4 z-[80] bg-white/90 hover:bg-white rounded-full p-2 transition-colors shadow-lg"
         aria-label="Close"
       >
         <svg
@@ -148,17 +148,12 @@ const SelectedCard = ({ selected, onClose }) => {
       </button>
 
       <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 0.4 }}
-        className="absolute inset-0 h-full w-full bg-black opacity-60 z-10"
-      />
-      <motion.div
         layoutId={`content-${selected?.id}`}
         initial={{ opacity: 0, y: 100 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="relative px-4 md:px-8 pb-4 z-[70] max-h-full overflow-y-auto"
+        className="relative z-[70] flex-1 overflow-y-auto px-4 md:px-8 py-12 md:py-14"
       >
         {/* MODAL — renders the rich expandedContent if present, falls back to content otherwise */}
         {selected?.expandedContent ?? selected?.content}

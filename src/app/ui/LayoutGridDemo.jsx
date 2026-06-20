@@ -64,19 +64,39 @@ const ProjectCard = ({ project }) => {
 // ──────────────────────────────────────────────────────────
 const SectionBlock = ({ label, children, accent = "blue" }) => {
   const accentMap = {
-    blue: "border-blue-500 text-blue-300",
-    purple: "border-purple-500 text-purple-300",
-    pink: "border-pink-500 text-pink-300",
-    green: "border-green-500 text-green-300",
+    blue: {
+      border: "border-blue-400",
+      text: "text-blue-300",
+      dot: "bg-blue-400",
+    },
+    purple: {
+      border: "border-purple-400",
+      text: "text-purple-300",
+      dot: "bg-purple-400",
+    },
+    pink: {
+      border: "border-pink-400",
+      text: "text-pink-300",
+      dot: "bg-pink-400",
+    },
+    green: {
+      border: "border-green-400",
+      text: "text-green-300",
+      dot: "bg-green-400",
+    },
   };
+  const a = accentMap[accent];
   return (
-    <div className={`border-l-4 ${accentMap[accent]} pl-4 mb-5`}>
-      <p
-        className={`text-xs md:text-sm font-bold uppercase tracking-wider mb-1 ${accentMap[accent].split(" ")[1]}`}
-      >
-        {label}
-      </p>
-      <p className="text-gray-200 text-base md:text-lg leading-relaxed">
+    <div className="w-full text-left bg-black/40 rounded-lg p-4 md:p-5 mb-3">
+      <div className="flex items-center gap-2 mb-2">
+        <span className={`w-2 h-2 rounded-full ${a.dot}`} />
+        <p
+          className={`text-xs md:text-sm font-bold uppercase tracking-wider ${a.text}`}
+        >
+          {label}
+        </p>
+      </div>
+      <p className="text-gray-100 text-sm md:text-base leading-relaxed text-left">
         {children}
       </p>
     </div>
@@ -87,12 +107,12 @@ const ProjectDetail = ({ project }) => {
   const d = project.detail;
 
   return (
-    <div className="bg-gradient-to-b max-w-3xl">
-      <p className="font-bold text-3xl md:text-5xl text-start text-white mb-1">
+    <div className="w-full max-w-2xl mx-auto bg-[#15151c] rounded-xl p-5 md:p-8 text-left shadow-2xl border border-white/10">
+      <p className="font-bold text-2xl md:text-4xl text-left text-white mb-1">
         {project.title}
       </p>
       {d?.subtitle && (
-        <p className="text-blue-400 font-semibold text-base md:text-lg mb-6">
+        <p className="text-blue-400 font-semibold text-sm md:text-base mb-5 text-left">
           {d.subtitle}
         </p>
       )}
@@ -126,11 +146,11 @@ const ProjectDetail = ({ project }) => {
       )}
 
       {/* Tech Stack */}
-      <div className="flex flex-wrap gap-2 mb-6 mt-6">
+      <div className="flex flex-wrap gap-2 mb-5 mt-5">
         {project.tech.map((tech, idx) => (
           <span
             key={idx}
-            className="px-3 py-1.5 md:px-4 md:py-2 bg-blue-600/90 text-white font-semibold rounded-full text-sm md:text-base border border-purple-500/40"
+            className="px-3 py-1.5 bg-blue-600/90 text-white font-semibold rounded-full text-xs md:text-sm border border-purple-500/40"
           >
             {tech}
           </span>
@@ -144,9 +164,9 @@ const ProjectDetail = ({ project }) => {
             href={project.github}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 bg-gray-700/80 hover:bg-gray-600 rounded-lg text-white text-sm md:text-base font-bold transition-colors px-3 py-2 md:px-6 md:py-3"
+            className="flex items-center gap-2 bg-gray-700/80 hover:bg-gray-600 rounded-lg text-white text-xs md:text-sm font-bold transition-colors px-3 py-2 md:px-5 md:py-2.5"
           >
-            <Github size={20} />
+            <Github size={18} />
             Code
           </a>
         )}
@@ -155,9 +175,9 @@ const ProjectDetail = ({ project }) => {
             href={project.live}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 px-3 py-2 md:px-6 md:py-3 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white text-sm md:text-base font-bold transition-all"
+            className="flex items-center gap-2 px-3 py-2 md:px-5 md:py-2.5 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white text-xs md:text-sm font-bold transition-all"
           >
-            <ExternalLink size={20} />
+            <ExternalLink size={18} />
             Live Demo
           </a>
         )}
