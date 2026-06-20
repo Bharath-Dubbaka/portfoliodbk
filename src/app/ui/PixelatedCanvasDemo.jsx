@@ -1,6 +1,5 @@
 "use client";
 import { PixelatedCanvas } from "./pixelated-canvas";
-import Img_firstbite2 from "../../../public/assets/projectImgs/Img_firstbite2.PNG";
 
 export function PixelatedCanvasDemo() {
   return (
