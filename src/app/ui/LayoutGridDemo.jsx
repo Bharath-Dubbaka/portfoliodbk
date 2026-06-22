@@ -75,7 +75,7 @@ const ProjectCard = ({ project }) => {
           className="flex items-center gap-2 px-3 py-2 bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-lg text-white text-lg font-bold transition-all "
         >
           <ExternalLink size={24} />
-          Live Demo
+          Live Link
         </a>
       </div>
     </div>
@@ -331,22 +331,46 @@ const ProjectDetail = ({ project }) => {
 
   return (
     <div className="w-full max-w-3xl mx-auto text-left">
-      {/* Lead tech chip - sits right under the image */}
-      {/* {project.tech?.[0] && (
-        <span className="inline-block px-3 py-1.5 bg-blue-600 text-white font-bold rounded-full text-xs mb-4">
-          {project.tech[0]}
-        </span>
-      )} */}
+      <div className="flex items-start justify-between gap-4 mb-5">
+        <div>
+          <p className="font-bold text-3xl md:text-4xl text-left text-white mb-1">
+            {project.title}
+          </p>
+          {d?.subtitle && (
+            <p className="text-blue-400 font-semibold text-sm md:text-base text-left flex items-center gap-1.5">
+              <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
+              {d.subtitle.toUpperCase()}
+            </p>
+          )}
+        </div>
 
-      <p className="font-bold text-3xl md:text-4xl text-left text-white mb-1">
-        {project.title}
-      </p>
-      {d?.subtitle && (
-        <p className="text-blue-400 font-semibold text-sm md:text-base mb-5 text-left flex items-center gap-1.5">
-          <span className="inline-block w-1.5 h-1.5 rounded-full bg-blue-400" />
-          {d.subtitle.toUpperCase()}
-        </p>
-      )}
+        <div className="flex-shrink-0 flex gap-2 items-end">
+          {project.github && (
+            <a
+              href={project.github}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 bg-gray-700/80 hover:bg-gray-600 rounded-lg text-white text-xs md:text-sm font-bold transition-colors px-3 py-2"
+            >
+              <Github size={16} />
+              <span className="hidden sm:inline">Source Code</span>
+            </a>
+          )}
+          {project.live && (
+            <a
+              href={project.live}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="flex items-center gap-1.5 px-3 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-xs md:text-sm font-bold transition-all"
+            >
+              <ExternalLink size={16} />
+              <span className="hidden sm:inline">Live Demo</span>
+            </a>
+          )}
+        </div>
+      </div>
 
       {/* STATS — the "wow" numbers, front and center */}
       <StatsGrid stats={d?.stats} />
@@ -377,17 +401,7 @@ const ProjectDetail = ({ project }) => {
           </p>
         </div>
       )}
-      {/* Results strip — full width*/}
-      {d?.marketingResults && (
-        <div className="mt-2 mb-3 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-xl p-4">
-          <p className="text-[11px] font-bold uppercase tracking-wider text-green-300 mb-1.5">
-            Results
-          </p>
-          <p className="text-gray-200 text-sm md:text-[15px] leading-relaxed">
-            {d.marketingResults}
-          </p>
-        </div>
-      )}
+
       {/* TAB SWITCHER — only shows if both highlight sets exist */}
       <TabSwitcher
         active={activeTab}
@@ -426,6 +440,18 @@ const ProjectDetail = ({ project }) => {
           ))}
         </motion.div>
       </AnimatePresence>
+
+      {/* Results strip — full width, shown under whichever tab is active if present */}
+      {activeTab === "marketing" && d?.marketingResults && (
+        <div className="mt-2 mb-3 bg-gradient-to-r from-green-500/10 to-blue-500/10 border border-green-500/20 rounded-xl p-4">
+          <p className="text-[11px] font-bold uppercase tracking-wider text-green-300 mb-1.5">
+            Results
+          </p>
+          <p className="text-gray-200 text-sm md:text-[15px] leading-relaxed">
+            {d.marketingResults}
+          </p>
+        </div>
+      )}
 
       {/* Dev / systems note — full width, kept brief, only on technical tab */}
       {activeTab === "technical" && d?.systemNote && (
@@ -557,11 +583,11 @@ export function LayoutGridDemo() {
       github: "https://github.com/Bharath-Dubbaka/recruitNinja",
       live: "https://recruitcatch.netlify.app/",
       detail: {
-        subtitle: "Free X-Ray Search Tool — 1,000+ Active Recruiters/monthly - Open Source",
+        subtitle: "Free X-Ray Search Tool — 1,000+ Active Recruiters",
         overview:
           "1K active users - FREE X-Ray Search Tool built for recruiters to find publicly available profiles on LinkedIn (without any limitations) to match their job requirements.",
         stats: [
-          { value: "1,000's", label: "Active Users monthly" },
+          { value: "1,000+", label: "Active Users" },
           { value: "$0", label: "Ad Spend" },
         ],
         story:
@@ -601,12 +627,28 @@ export function LayoutGridDemo() {
     {
       title: "CVtoSalary.com",
       description:
-        "Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder functionality, Practice project trying to clone Tinder",
+        "A salary-negotiation tool that estimates fair compensation ranges from a resume, built to practice Aceternity UI and TypeScript patterns in a real, deployed app.",
       image: "/assets/projectImgs/Img_cvtosalary.png",
-      tech: ["Next.js", "Typescript", "Tailwind CSS", "Aceternity UI"],
+      tech: ["Next.js", "TypeScript", "Tailwind CSS", "Aceternity UI"],
       github: "https://github.com/Bharath-Dubbaka/CvtoSalary-aceternity",
       live: "",
-      // no detail object — closed-card-only, untouched
+      detail: {
+        subtitle: "Practice Build — Salary Estimation Tool",
+        overview:
+          "A focused practice project: upload or paste a resume, get an estimated fair salary range based on role, experience, and skills — built specifically to get hands-on with TypeScript and Aceternity UI's animation-heavy component patterns.",
+        story:
+          "Not every project needs to be a client deliverable to be worth building. This one was about deliberately stretching into TypeScript and a new component library (Aceternity UI) outside of a client deadline — the kind of practice that compounds into the bigger builds.",
+        highlights: [
+          {
+            label: "Execution",
+            text: "Built end-to-end with strict TypeScript typing and Aceternity UI's motion-based components — a deliberate skill-stretch outside familiar JavaScript/Tailwind territory.",
+          },
+          {
+            label: "Why It Matters",
+            text: "Practice projects like this are where new tools get tested safely before they show up in client or product work.",
+          },
+        ],
+      },
     },
     {
       title: "ResumeOnFly - SaaS",
@@ -620,11 +662,11 @@ export function LayoutGridDemo() {
         subtitle: "SaaS Product — AI-Tailored Resumes, Built Solo",
         overview:
           "Built from scratch: built for busy job seekers — upload your master resume once, and customize it for every job in a few clicks.",
-        stats: [
-          { value: "3", label: "Resume Templates" },
-          { value: "2", label: "Payment Gateways" },
-          { value: "Solo", label: "Built & Shipped" },
-        ],
+        // stats: [
+        //   { value: "3", label: "Resume Templates" },
+        //   { value: "2", label: "Payment Gateways" },
+        //   { value: "Solo", label: "Built & Shipped" },
+        // ],
         story:
           "Job seekers either reuse one generic resume everywhere, or burn hours manually tailoring each one. I built a SaaS that solves this — upload your resume once, paste any job description, get an AI-tailored version in minutes.",
         marketingHighlights: [
@@ -739,14 +781,36 @@ export function LayoutGridDemo() {
       },
     },
     {
-      title: "NetflixGPT",
+      title: "Other",
       description:
-        "Movie App using TMDB, YouTube to view your desired movies & GPT APIs to recommend desired content",
+        "Smaller-scope freelance work across social media management, web design, and à la carte SEO/SMM services for staffing firms, photographers, and local businesses.",
       image: "/assets/projectImgs/Img_NetflixGPT.png",
-      tech: ["React", "Tailwind", "TMDB API", "Youtube API", "OpenAI"],
-      github: "https://github.com/Bharath-Dubbaka/SwiggyClone",
-      live: "https://moviesflixgpt.netlify.app",
-      // no detail object — closed-card-only, untouched
+      tech: ["Social Media Mgmt", "Web Design", "SEO", "SMM"],
+      github: "",
+      live: "",
+      detail: {
+        subtitle: "Independent Freelance Engagements (Smaller Scope)",
+        overview:
+          "A collection of scoped, shorter-term freelance engagements — social media management for staffing firms, landing pages for local businesses, and à la carte SEO/SMM services — alongside the larger client relationships above.",
+        story:
+          "Not every engagement is an 18-month retainer. Some clients just need one thing done well — a content calendar, a landing page, a focused SEO push. These smaller projects rounded out the freelance work and kept the pipeline of real, paying client work going between the bigger builds.",
+        marketingHighlights: [
+          {
+            label: "Social Media Management (SMM)",
+            text: "Managed LinkedIn, Facebook, and X content calendars (3 posts/week) for multiple staffing firm clients over engagements up to 6 months; grew one client's LinkedIn following from 100 to 2,000 organically.",
+          },
+          {
+            label: "Web Design & Development",
+            text: "Delivered landing pages and portfolio websites for photography clients, a co-working space, and an army training camp.",
+          },
+          {
+            label: "À La Carte SEO & SMM Services",
+            text: "Provided scoped, single-service engagements (SEO-only or SMM-only) for smaller clients based on specific business needs.",
+          },
+        ],
+        marketingResults:
+          "Grew one staffing client's LinkedIn following from 100 to 2,000 organically · Delivered 5+ standalone landing page and SMM engagements across recruiting, photography, co-working, and training-camp clients.",
+      },
     },
   ];
 

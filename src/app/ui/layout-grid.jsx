@@ -48,7 +48,7 @@ export const LayoutGrid = ({ cards }) => {
         animate={{ opacity: selected?.id ? 0.5 : 0 }}
       />
 
-      <div className="w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl lg:max-w-[90%] mx-auto gap-5 md:gap-3 relative">
+      <div className="w-full h-full md:p-2 grid grid-cols-1 md:grid-cols-3 border max-w-7xl lg:max-w-[85%] mx-auto gap-5 md:gap-3 relative">
         {cards.map((card, i) => (
           <div
             key={i}
@@ -94,6 +94,10 @@ export const LayoutGrid = ({ cards }) => {
 
 const ImageComponent = ({ card }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const project = card?.content?.props?.project;
+  const techPreview = project?.tech?.slice(0, 3) || [];
+  const extraCount = (project?.tech?.length || 0) - techPreview.length;
+
   return (
     <div
       className="w-full h-full"
@@ -111,28 +115,70 @@ const ImageComponent = ({ card }) => {
 
       {/* Overlay for hover and mobile */}
       <div
-        className={`absolute inset-0 transition-opacity duration-300 flex flex-col items-end justify-around ${
+        className={`absolute inset-0 transition-all duration-300 flex flex-col justify-end ${
           isHovered
-            ? "opacity-100 md:opacity-100 bg-black/20 backdrop-blur-xs"
-            : "opacity-100 md:opacity-0 bg-black/10"
+            ? "bg-gradient-to-t from-black/95 via-black/70 to-black/20"
+            : "bg-gradient-to-t from-black/80 via-black/20 to-transparent md:from-black/40 md:via-transparent md:to-transparent"
         }`}
       >
-        <motion.h3
-          initial={{ y: -50, opacity: 0 }}
-          animate={isHovered ? { y: 0, opacity: 1 } : { y: -50, opacity: 1 }}
-          transition={{ duration: 0.3 }}
-          className="text-white text-2xl md:text-3xl font-bold mb-4 bg-gradient-to-r to-gray-500/60 from-gray-600/80 md:bg-transparent px-4 py-2 self-start text-start rounded-e-2xl"
-        >
-          {card?.content?.props?.project?.title}
-        </motion.h3>
-        <motion.button
-          initial={{ y: 50, opacity: 0 }}
-          animate={isHovered ? { y: 0, opacity: 1 } : { y: 50, opacity: 1 }}
-          transition={{ duration: 0.3, delay: 0.1 }}
-          className="px-6 py-2 md:py-4 mr-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-medium transition-colors md:bg-blue-600  self-end"
-        >
-          View More
-        </motion.button>
+        <div className="p-4 md:p-6">
+          {/*Title and Description — only visible on hover (desktop) or always (mobile) */}
+          <motion.p
+            initial={{ opacity: 0, height: 0 }}
+            animate={
+              isHovered
+                ? { opacity: 1, height: "auto" }
+                : { opacity: 0, height: 0 }
+            }
+            transition={{ duration: 0.25 }}
+            className="text-gray-200 text-sm md:text-[15px] leading-relaxed mb-3 overflow-hidden hidden md:block"
+          >
+            <div className="text-white text-xl md:text-3xl font-bold mb-1.5">
+              {project?.title}
+            </div>
+            {project?.description}
+            {/* Tech chips */}
+            {/* {techPreview.length > 0 && (
+              <div
+                className={`flex flex-wrap gap-1.5 mb-3 transition-opacity duration-300 ${
+                  isHovered ? "opacity-100" : "opacity-0 md:opacity-100"
+                }`}
+              >
+                {techPreview.map((t, i) => (
+                  <span
+                    key={i}
+                    className="text-[10px] md:text-xs font-semibold px-2 py-1 rounded-full bg-white/15 text-white border border-white/20"
+                  >
+                    {t}
+                  </span>
+                ))}
+                {extraCount > 0 && (
+                  <span className="text-[10px] md:text-xs font-semibold px-2 py-1 rounded-full bg-white/10 text-gray-300 border border-white/15">
+                    +{extraCount} more
+                  </span>
+                )}
+              </div>
+            )} */}
+          </motion.p>
+          {/* Mobile always-visible description (no hover state on touch) */}
+          <p className="text-gray-200 text-sm leading-relaxed mb-3 md:hidden line-clamp-2">
+            {project?.description}
+          </p>
+
+          {/* CTA — desktop: fades/slides in on hover */}
+          <motion.button
+            initial={{ y: 10, opacity: 0 }}
+            animate={isHovered ? { y: 0, opacity: 1 } : { y: 0, opacity: 0 }}
+            transition={{ duration: 0.25, delay: 0.05 }}
+            className="hidden md:inline-flex items-center gap-2 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg font-semibold text-sm transition-colors"
+          >
+            View Project Case Study
+          </motion.button>
+          {/* CTA — mobile: always visible, no hover state on touch devices */}
+          <button className="md:hidden inline-flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg font-semibold text-sm">
+            View Project Case Study
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -189,7 +235,7 @@ const SelectedCard = ({ selected, onClose }) => {
       </div>
 
       {/* STICKY FOOTER — action buttons pinned at the bottom, always visible */}
-      {(selected?.githubLink || selected?.liveLink) && (
+      {/* {(selected?.githubLink || selected?.liveLink) && (
         <div className="flex-shrink-0 flex justify-end gap-3 px-5 md:px-10 py-4 bg-[#0d0d12] border-t border-white/10">
           {selected?.githubLink && (
             <a
@@ -212,11 +258,11 @@ const SelectedCard = ({ selected, onClose }) => {
               className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 rounded-lg text-white text-sm font-bold transition-all"
             >
               <ExternalLink size={18} />
-              Live Demo
+              Live Link
             </a>
           )}
         </div>
-      )}
+      )} */}
     </div>
   );
 };
