@@ -36,7 +36,7 @@ const UseScrollBasic = () => {
         x: "-50%",
         y: "-50%",
       }}
-      className="fixed left-1/2 h-2 w-screen z-10"
+      className="hidden lg:block fixed left-1/2 h-2 w-screen z-10"
     />
   );
 };
