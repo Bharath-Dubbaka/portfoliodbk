@@ -1,6 +1,13 @@
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
 import { Github, Mail, Linkedin, Twitter } from "lucide-react";
 import { PixelatedCanvasDemo } from "../ui/PixelatedCanvasDemo";
+import {
+  motion,
+  useInView,
+  useMotionValueEvent,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 
 export default function HeroSection() {
   const scrollToSection = (sectionId) => {
@@ -9,6 +16,17 @@ export default function HeroSection() {
       element.scrollIntoView({ behavior: "smooth" });
     }
   };
+  const targetRef = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: targetRef,
+    // offset: ["start end", "end start"],
+    offset: ["start start", "end start"],
+  });
+  const isInView = useInView(targetRef, {
+    amount: 0.4, // 40% visible
+    once: false,
+  });
+  const rotate = useTransform(scrollYProgress, [0, 1], ["0deg", "20deg"]);
 
   return (
     <section
@@ -55,67 +73,86 @@ export default function HeroSection() {
         </div>
 
         {/* Right Content - About Me Section */}
-        <motion.div
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="bg-white rounded-2xl shadow-xl px-4 pt-2 md:p-8 sm:pt-8 md:px-2 lg:px-6 space-y-4 md:space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out max-w-full"
-        >
-          <PixelatedCanvasDemo />
-          {/* Contact Info */}
+        <div className="w-full flex justify-center items-center">
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            className="bg-white rounded-2xl flex flex-col shadow-xl px-4 pt-2 md:p-8 sm:pt-8 md:px-2 lg:px-6 space-y-4 md:space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out max-w-full"
+            ref={targetRef}
+            style={{ rotate }}
+            animate={{
+              opacity: isInView ? 1 : 0,
+              x: isInView ? 0 : 50, // <-- Add this line to reset position when in view
+            }}
+            transition={{
+              duration: 0.5,
+              // ease: "easeInOut",
+              delay: 0.2,
+            }}
+          >
+            {/* Image Wrapper Container to enforce perfect alignment */}
+            <div className="w-full overflow-hidden rounded-xl bg-gray-50">
+              <img
+                src="/assets/dbk2.jpg"
+                alt="Bharath Dubbaka"
+                className=" object-center block w-64 sm:w-72 md:w-80 lg:w-full max-w-sm rounded-2xl shadow-xl object-cover"
+              />
+            </div>
+            {/* <PixelatedCanvasDemo /> */}
+            {/* Contact Info */}
 
-          {/* Social Links */}
-          <div className="pt-2">
-            <div className="pt-2 pb-6 md:pt-4 md:pb-4 flex flex-wrap gap-3 md:gap-4 justify-start items-center">
-              {[
-                {
-                  icon: Github,
-                  label: "GitHub",
-                  href: "https://github.com/Bharath-Dubbaka",
-                  color: "hover:bg-gray-800 hover:text-white",
-                },
-                {
-                  icon: Linkedin,
-                  label: "LinkedIn",
-                  href: "https://www.linkedin.com/in/bharath-kumar-4bb399208/",
-                  color: "hover:bg-blue-600 hover:text-white",
-                },
-                {
-                  icon: Twitter,
-                  label: "Twitter",
-                  href: "https://x.com/reach__Bharath",
-                  color: "hover:bg-blue-400 hover:text-white",
-                },
-                {
-                  icon: Mail,
-                  label: "Email",
-                  onClick: () => scrollToSection("contact"),
-                  color: "hover:bg-red-500 hover:text-white",
-                },
-              ].map((social) => (
-                <motion.a
-                  key={social.label}
-                  href={social.href}
-                  onClick={social.onClick}
-                  target={social.href ? "_blank" : undefined}
-                  rel={social.href ? "noopener noreferrer" : undefined}
-                  aria-label={social.label}
-                  className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-700 transition-all ${social.color}`}
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                >
-                  <social.icon className="w-4 h-4 md:w-5 md:h-5" />
-                </motion.a>
-              ))}
-              {/* Contact Info */}
-              {/* <div className="space-y-2 w-full md:w-auto mt-0">
+            {/* Social Links */}
+            <div className="pt-2">
+              <div className="pt-2 pb-6 md:pt-4 md:pb-4 flex flex-wrap gap-3 md:gap-4 justify-start items-center">
+                {[
+                  {
+                    icon: Github,
+                    label: "GitHub",
+                    href: "https://github.com/Bharath-Dubbaka",
+                    color: "hover:bg-gray-800 hover:text-white",
+                  },
+                  {
+                    icon: Linkedin,
+                    label: "LinkedIn",
+                    href: "https://www.linkedin.com/in/bharath-kumar-4bb399208/",
+                    color: "hover:bg-blue-600 hover:text-white",
+                  },
+                  {
+                    icon: Twitter,
+                    label: "Twitter",
+                    href: "https://x.com/reach__Bharath",
+                    color: "hover:bg-blue-400 hover:text-white",
+                  },
+                  {
+                    icon: Mail,
+                    label: "Email",
+                    onClick: () => scrollToSection("contact"),
+                    color: "hover:bg-red-500 hover:text-white",
+                  },
+                ].map((social) => (
+                  <motion.a
+                    key={social.label}
+                    href={social.href}
+                    onClick={social.onClick}
+                    target={social.href ? "_blank" : undefined}
+                    rel={social.href ? "noopener noreferrer" : undefined}
+                    aria-label={social.label}
+                    className={`w-10 h-10 md:w-12 md:h-12 rounded-full border-2 border-gray-300 flex items-center justify-center text-gray-700 transition-all ${social.color}`}
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <social.icon className="w-4 h-4 md:w-5 md:h-5" />
+                  </motion.a>
+                ))}
+                {/* Contact Info */}
+                {/* <div className="space-y-2 w-full md:w-auto mt-0">
                         <p className="text-blue-600 font-semibold text-base md:text-lg cursor-pointer hover:text-blue-700">
                            View My Portfolio
                         </p>
                      </div> */}
+              </div>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
       </div>
 
       {/* Decorative Navigation Dots - Hidden on mobile/tablet */}
