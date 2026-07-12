@@ -16,6 +16,7 @@ import {
   AnimatePresence,
 } from "framer-motion";
 import Loader from "./Loader";
+import CardHolder from "./components/CardHolder";
 
 const UseScrollBasic = () => {
   const { scrollYProgress } = useScroll();
@@ -143,7 +144,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="bg-gray-900 text-white">
+    <div className="bg-gray-100 text-white">
       {/* <Navigation
         activeSection={activeSection}
         setActiveSection={setActiveSection}
@@ -153,9 +154,13 @@ export default function Home() {
         {isLoading && <Loader key="loader" />}
       </AnimatePresence>
 
-      <HeroSection revealImages={!isLoading} scrollToSection={scrollToSection} />
+      <HeroSection
+        revealImages={!isLoading}
+        scrollToSection={scrollToSection}
+      />
       <UseScrollBasic />
-      <ProjectsSection />
+      {/* <ProjectsSection /> */}
+      <CardHolder />
       <AboutSection />
       <ContactSection />
     </div>

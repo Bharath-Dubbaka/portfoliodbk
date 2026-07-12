@@ -32,11 +32,14 @@ export default function HeroSection({ revealImages = true }) {
     once: false,
   });
   const rotate = useTransform(scrollYProgress, [0, 1], ["0deg", "20deg"]);
+  const heroRef = useRef(null);
+  const heroInView = useInView(heroRef, { amount: 0.3, once: true });
 
   return (
     <section
       id="hero"
-      className="min-h-max md:min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 md:pt-2 pb-12 md:pb-10"
+      ref={heroRef}
+      className="min-h-max md:min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 pb-28 md:pt-2 md:pb-10"
     >
       <div className="max-w-full md:max-w-[98%] lg:max-w-[90%] w-full grid lg:grid-cols-2 gap-6 md:gap-4 items-center">
         {/* Left Content - Name and Taglines */}
@@ -44,11 +47,11 @@ export default function HeroSection({ revealImages = true }) {
           {/* Main Name with Gradient Effect + flip-on-hover */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+            animate={heroInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 4.0, delay: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl leading-tight"
           >
-            <h1 className="text-7xl sm:text-7xl md:text-9xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max">
+            <h1 className="text-7xl sm:text-7xl md:text-9xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max rotate-3 md:rotate-0">
               <Text3DGroup>
                 <Text3D
                   primary="BHARATH"
@@ -69,15 +72,15 @@ export default function HeroSection({ revealImages = true }) {
           {/* Taglines */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="space-y-3 md:space-y-4 text-gray-950 font-medium text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-wide leading-relaxed font-sans"
+            animate={heroInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 4.4, delay: 0.5 }}
+            className="pt-8 space-y-3 md:space-y-4 text-gray-950 font-medium text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-wide leading-relaxed font-sans"
           >
             <p className="border-l-4 border-blue-500 pl-3 md:pl-4">
-              Growth Strategist • Brand Builder
+              Growth Strategist || Brand Builder
             </p>
             <p className="border-l-4 border-gray-500 pl-3 md:pl-4">
-              SEO • Marketing • Content • Branding
+              SEO || Marketing || Content || Branding
             </p>
             <p className="border-l-4 border-blue-400 pl-3 md:pl-4">
               + Full-Stack Developer — I Build What I Design
@@ -93,14 +96,10 @@ export default function HeroSection({ revealImages = true }) {
             ref={targetRef}
             style={{ rotate }}
             animate={{
-              opacity: isInView ? 1 : 0,
-              x: isInView ? 0 : 50, // <-- Add this line to reset position when in view
+              opacity: heroInView && isInView ? 1 : 0,
+              x: heroInView && isInView ? 0 : 50,
             }}
-            transition={{
-              duration: 0.5,
-              // ease: "easeInOut",
-              delay: 0.2,
-            }}
+            transition={{ duration: 6.0, delay: 0.5 }}
           >
             {/* Image Wrapper Container to enforce perfect alignment */}
             <div className="w-full overflow-hidden rounded-xl bg-gray-50">

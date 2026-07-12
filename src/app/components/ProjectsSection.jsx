@@ -4,12 +4,13 @@ import { useRef } from "react";
 import { ExternalLink, Github } from "lucide-react";
 import { LayoutGrid } from "../ui/layout-grid";
 import { LayoutGridDemo } from "../ui/LayoutGridDemo";
+import CardHolder from "./CardHolder";
 
 export default function ProjectsSection() {
   const [ref, inView] = useInView({
     threshold: 0.2,
   });
-   const [proref, inproView] = useInView({
+  const [proref, inproView] = useInView({
     threshold: 0.2,
   });
 
@@ -131,6 +132,7 @@ export default function ProjectsSection() {
             </span>
           </motion.p>
         </motion.div>
+
 
         {/* Projects grid NEW*/}
         <motion.div
