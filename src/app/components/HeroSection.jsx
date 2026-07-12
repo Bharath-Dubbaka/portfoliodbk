@@ -48,7 +48,7 @@ export default function HeroSection({ revealImages = true }) {
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl leading-tight"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max">
+            <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max">
               <Text3DGroup>
                 <Text3D
                   primary="BHARATH"
