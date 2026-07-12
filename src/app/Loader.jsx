@@ -88,7 +88,7 @@ export default function Loader() {
       initial="initial"
       exit="exit"
       // fixed, full-viewport, above everything — same role as .introduction
-      className="fixed inset-0 z-[99] flex h-screen w-screen items-center justify-center bg-[#fff000]"
+      className="fixed inset-0 z-[99] flex h-screen w-screen items-center justify-center bg-[#0e32d3]"
     >
       {dimension.width > 0 && (
         <>

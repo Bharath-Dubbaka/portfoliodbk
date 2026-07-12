@@ -153,7 +153,7 @@ export default function Home() {
         {isLoading && <Loader key="loader" />}
       </AnimatePresence>
 
-      <HeroSection scrollToSection={scrollToSection} />
+      <HeroSection revealImages={!isLoading} scrollToSection={scrollToSection} />
       <UseScrollBasic />
       <ProjectsSection />
       <AboutSection />

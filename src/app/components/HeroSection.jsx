@@ -8,8 +8,13 @@ import {
   useScroll,
   useTransform,
 } from "framer-motion";
+import { Text3D, Text3DGroup } from "./Text3D";
+import PixelImage from "./PixelImage";
 
-export default function HeroSection() {
+// `revealImages`: pass false while your full-screen Loader is up, then
+// true once it's gone -- see the App integration note below. Defaults
+// to true so this still works fine if you're not using a loader.
+export default function HeroSection({ revealImages = true }) {
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
@@ -20,7 +25,7 @@ export default function HeroSection() {
   const { scrollYProgress } = useScroll({
     target: targetRef,
     // offset: ["start end", "end start"],
-    offset: ["start start", "end start"],
+    offset: ["start 25%", "end start"],
   });
   const isInView = useInView(targetRef, {
     amount: 0.4, // 40% visible
@@ -33,23 +38,31 @@ export default function HeroSection() {
       id="hero"
       className="min-h-max md:min-h-screen bg-gray-100 flex items-center justify-center px-4 md:px-4 pt-20 md:pt-2 pb-12 md:pb-10"
     >
-      <div className="max-w-full md:max-w-[98%] lg:max-w-[85%] w-full grid lg:grid-cols-2 gap-6 md:gap-4 items-center">
+      <div className="max-w-full md:max-w-[98%] lg:max-w-[90%] w-full grid lg:grid-cols-2 gap-6 md:gap-4 items-center">
         {/* Left Content - Name and Taglines */}
-        <div className="space-y-6 md:space-y-8">
-          {/* Main Name with Gradient Effect */}
+        <div className="space-y-6 md:space-y-8 min-w-0 relative z-20">
+          {/* Main Name with Gradient Effect + flip-on-hover */}
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl leading-tight"
           >
-            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-8xl font-black leading-none tracking-tight">
-              <span className="font-sans block bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent">
-                BHARATH
-              </span>
-              <span className="font-sans block bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent">
-                DUBBAKA
-              </span>
+            <h1 className="text-5xl sm:text-6xl md:text-8xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max">
+              <Text3DGroup>
+                <Text3D
+                  primary="BHARATH"
+                  secondary="BHARATH"
+                  primaryClassName="font-sans block bg-gradient-to-r from-blue-800 to-blue-600 bg-clip-text text-transparent"
+                  secondaryClassName="font-sans block text-gray-900"
+                />
+                <Text3D
+                  primary="DUBBAKA"
+                  secondary="DUBBAKA"
+                  primaryClassName="font-sans block bg-gradient-to-r from-gray-800 to-gray-600 bg-clip-text text-transparent"
+                  secondaryClassName="font-sans block text-blue-600"
+                />
+              </Text3DGroup>
             </h1>
           </motion.div>
 
@@ -76,7 +89,7 @@ export default function HeroSection() {
         <div className="w-full flex justify-center items-center">
           <motion.div
             initial={{ opacity: 0, x: 50 }}
-            className="bg-white rounded-2xl flex flex-col shadow-xl px-4 pt-2 md:p-8 sm:pt-8 md:px-2 lg:px-6 space-y-4 md:space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out max-w-full"
+            className="bg-white rounded-2xl flex flex-col shadow-2xl px-4 pt-2 md:p-8 sm:pt-8 md:px-2 lg:px-6 space-y-4 md:space-y-6 border border-blue-100 shadow-blue-100 hover:shadow-blue-200 transition-shadow duration-300 ease-in-out max-w-full"
             ref={targetRef}
             style={{ rotate }}
             animate={{
@@ -94,7 +107,7 @@ export default function HeroSection() {
               <img
                 src="/assets/dbk2.jpg"
                 alt="Bharath Dubbaka"
-                className=" object-center block w-80 sm:w-80 md:w-[24rem] lg:w-full max-w-sm rounded-2xl shadow-xl object-cover"
+                className=" object-center block w-80 sm:w-80 md:w-[24rem] lg:w-[40rem] max-w-sm rounded-2xl shadow-xl object-cover border-2 border-blue-900"
               />
             </div>
             {/* <PixelatedCanvasDemo /> */}
@@ -143,36 +156,11 @@ export default function HeroSection() {
                     <social.icon className="w-4 h-4 md:w-5 md:h-5" />
                   </motion.a>
                 ))}
-                {/* Contact Info */}
-                {/* <div className="space-y-2 w-full md:w-auto mt-0">
-                        <p className="text-blue-600 font-semibold text-base md:text-lg cursor-pointer hover:text-blue-700">
-                           View My Portfolio
-                        </p>
-                     </div> */}
               </div>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Decorative Navigation Dots - Hidden on mobile/tablet */}
-      {/* <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.2 }}
-            className="fixed right-8 top-1/2 -translate-y-1/2 hidden xl:flex flex-col gap-4"
-         >
-            {[...Array(5)].map((_, i) => (
-               <div
-                  key={i}
-                  className={`w-3 h-3 rounded-full border-2 transition-colors ${
-                     i === 0
-                        ? "bg-blue-600 border-blue-600"
-                        : "border-gray-300 hover:border-blue-400"
-                  }`}
-               ></div>
-            ))}
-         </motion.div> */}
     </section>
   );
 }
