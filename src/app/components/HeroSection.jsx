@@ -94,7 +94,7 @@ export default function HeroSection() {
               <img
                 src="/assets/dbk2.jpg"
                 alt="Bharath Dubbaka"
-                className=" object-center block w-64 sm:w-72 md:w-80 lg:w-full max-w-sm rounded-2xl shadow-xl object-cover"
+                className=" object-center block w-80 sm:w-80 md:w-[24rem] lg:w-full max-w-sm rounded-2xl shadow-xl object-cover"
               />
             </div>
             {/* <PixelatedCanvasDemo /> */}

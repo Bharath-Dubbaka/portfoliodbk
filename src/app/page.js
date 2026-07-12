@@ -13,7 +13,9 @@ import {
   useMotionValueEvent,
   useScroll,
   useTransform,
+  AnimatePresence,
 } from "framer-motion";
+import Loader from "./Loader";
 
 const UseScrollBasic = () => {
   const { scrollYProgress } = useScroll();
@@ -46,6 +48,19 @@ export default function Home() {
   // Using useRef to hold the Lenis instance so it persists across renders
   // and can be accessed within scrollToSection and cleanup.
   const lenisRef = useRef(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Total time the loader's words + exit animation need to finish:
+    // 1000ms (first word hold) + 6 words * 150ms + slideUp exit (0.8s + 0.2s delay)
+    // Give it a little buffer so the exit isn't cut off.
+    const timeout = setTimeout(() => setIsLoading(false), 2800);
+
+    // Prevent scrolling while the loader is up
+    document.body.style.overflow = isLoading ? "hidden" : "auto";
+
+    return () => clearTimeout(timeout);
+  }, [isLoading]);
 
   // Define scrollToSection here, inside the Home component, before the return statement.
   const scrollToSection = (sectionId) => {
@@ -134,6 +149,10 @@ export default function Home() {
         setActiveSection={setActiveSection}
         scrollToSection={scrollToSection}
       /> */}
+      <AnimatePresence mode="wait">
+        {isLoading && <Loader key="loader" />}
+      </AnimatePresence>
+
       <HeroSection scrollToSection={scrollToSection} />
       <UseScrollBasic />
       <ProjectsSection />
