@@ -27,7 +27,7 @@ export default function CardHolder() {
   });
 
   return (
-    <section ref={container} className="main">
+    <section ref={container} className="main bg-gray-100">
       <div className="container mx-auto px-6">
         {/* Section title */}
         <motion.div
@@ -59,8 +59,7 @@ export default function CardHolder() {
         </motion.div>
 
         {/* Projects grid NEW*/}
-      <div className="main">
-
+        <div className="main">
           {projects.map((project, i) => {
             const targetScale = 1 - (projects.length - i) * 0.05;
             return (

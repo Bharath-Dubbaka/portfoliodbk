@@ -23,22 +23,28 @@ const Card = ({
 
   const imageScale = useTransform(scrollYProgress, [0, 1], [2, 1]);
   const scale = useTransform(progress, range, [1, targetScale]);
+  const settledColors = ["#f1f5f9", "#e4e4e7"];
+  const settledColor = settledColors[i % settledColors.length];
+  // Interpolate backgroundColor using the card's OWN local scroll progress
+  //    (the same scrollYProgress you already use for imageScale) --
+  //    0 = card just entering view, 1 = fully locked into its sticky spot
+  const bgColor = useTransform(scrollYProgress, [0, 1], [color, settledColor]);
 
   return (
-    <div ref={container} className="cardContainer">
+    <div ref={container} className="cardContainer text-black  blurred-box">
       <motion.div
         style={{
-          backgroundColor: color,
+          backgroundColor: bgColor,
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
         className="card leading-tight"
       >
-        <h2 className="font-light italic">{title}</h2>
+        <h2 className="font-semibold italic">{title}</h2>
         <div className="body">
           <div className="description">
             <p>{description}</p>
-            <span>
+            <span className="bg-blue-800">
               <a href={url} target="_blank">
                 See more
               </a>

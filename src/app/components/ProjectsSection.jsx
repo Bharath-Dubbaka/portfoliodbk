@@ -133,7 +133,6 @@ export default function ProjectsSection() {
           </motion.p>
         </motion.div>
 
-
         {/* Projects grid NEW*/}
         <motion.div
           ref={ref}

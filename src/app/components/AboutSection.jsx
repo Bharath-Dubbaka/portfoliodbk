@@ -7,19 +7,22 @@ export default function AboutSection() {
     threshold: 0.2,
     // triggerOnce: true,
   });
-
+  const [ref2, inView2] = useInView({
+    threshold: 0.2,
+    // triggerOnce: true,
+  });
+  const [ref3, inView3] = useInView({
+    threshold: 0.2,
+    // triggerOnce: true,
+  });
   return (
-    <section id="about" className="min-h-screen bg-gray-100 ">
+    <section id="about" className="min-h-screen bg-gray-100 pt-20">
       <div className="container mx-auto px-6 w-full md:max-w-[80%]">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-        >
+        <motion.div>
           {/* Header */}
           <div className="mb-8">
             <motion.p
+              ref={ref}
               className="text-sm md:text-base text-gray-500 uppercase tracking-wider mb-3"
               initial={{ opacity: 0 }}
               animate={inView ? { opacity: 1 } : {}}
@@ -59,8 +62,9 @@ export default function AboutSection() {
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={inView2 ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 }}
+              ref={ref2}
             >
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold text-gray-800 mb-4">
@@ -91,8 +95,9 @@ export default function AboutSection() {
             <motion.div
               className="space-y-6"
               initial={{ opacity: 0, y: 30 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={inView3 ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.7 }}
+              ref={ref3}
             >
               <div className="bg-white p-6 rounded-xl shadow-lg border border-gray-100">
                 <h3 className="text-xl font-bold mb-4 text-black">

@@ -51,7 +51,7 @@ export default function HeroSection({ revealImages = true }) {
             transition={{ duration: 4.0, delay: 0.8 }}
             className="text-4xl md:text-6xl lg:text-7xl leading-tight"
           >
-            <h1 className="text-7xl sm:text-7xl md:text-9xl lg:text-9xl font-black leading-none tracking-tight whitespace-nowrap w-max rotate-3 md:rotate-0">
+            <h1 className="text-6xl sm:text-7xl md:text-9xl lg:text-9xl font-black text-center leading-none tracking-tight whitespace-normal w-auto lg:whitespace-nowrap lg:w-max rotate-3 md:rotate-0">
               <Text3DGroup>
                 <Text3D
                   primary="BHARATH"
@@ -73,7 +73,7 @@ export default function HeroSection({ revealImages = true }) {
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             animate={heroInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 4.4, delay: 0.5 }}
+            transition={{ duration: 2.4, delay: 0.2 }}
             className="pt-8 space-y-3 md:space-y-4 text-gray-950 font-medium text-sm sm:text-base md:text-lg lg:text-xl uppercase tracking-wide leading-relaxed font-sans"
           >
             <p className="border-l-4 border-blue-500 pl-3 md:pl-4">
@@ -102,11 +102,11 @@ export default function HeroSection({ revealImages = true }) {
             transition={{ duration: 6.0, delay: 0.5 }}
           >
             {/* Image Wrapper Container to enforce perfect alignment */}
-            <div className="w-full overflow-hidden rounded-xl bg-gray-50">
+            <div className="w-full overflow-hidden rounded-xl bg-gray-100">
               <img
                 src="/assets/dbk2.jpg"
                 alt="Bharath Dubbaka"
-                className=" object-center block w-80 sm:w-80 md:w-[24rem] lg:w-[40rem] max-w-sm rounded-2xl shadow-xl object-cover border-2 border-blue-900"
+                className=" object-center block w-60 sm:w-80 md:w-[36rem] lg:w-[40rem] max-w-sm rounded-2xl shadow-xl object-cover border-2 border-blue-900"
               />
             </div>
             {/* <PixelatedCanvasDemo /> */}

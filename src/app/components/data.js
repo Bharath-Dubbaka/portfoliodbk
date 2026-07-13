@@ -88,7 +88,7 @@ export const projects = [
       systemNote:
         "Built the custom POS myself — live table management, kitchen display, GST-compliant billing — because the brand needed operational infrastructure, not just marketing.",
     },
-    color: "#88A28D",
+    // color: "#f1f5f9",
   },
 
   {
@@ -140,7 +140,7 @@ export const projects = [
         },
       ],
     },
-    color: "#B62429",
+    // color: "#e4e4e7",
   },
   {
     title: "CVtoSalary.com",
@@ -167,7 +167,7 @@ export const projects = [
         },
       ],
     },
-    color: "#C2491D",
+    // color: "#f4f4f5",
   },
   {
     title: "ResumeOnFly - SaaS",
@@ -223,7 +223,7 @@ export const projects = [
         },
       ],
     },
-    color: "#977F6D",
+    // color: "#e4e4e7",
   },
   {
     title: "BackpackerIndia",
@@ -299,7 +299,7 @@ export const projects = [
         },
       ],
     },
-    color: "#88A28D",
+    // color: "#f1f5f9",
   },
   {
     title: "Other",
@@ -332,7 +332,7 @@ export const projects = [
       marketingResults:
         "Grew one staffing client's LinkedIn following from 100 to 2,000 organically · Delivered 5+ standalone landing page and SMM engagements across recruiting, photography, co-working, and training-camp clients.",
     },
-    color: "#C2491D",
+    // color: "#e4e4e7",
   },
 ];
 
